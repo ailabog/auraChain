@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="editNewAppTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+<test name="editNewAppTest" >
+    <classes>
+        <class name="ch.fabric.qa.apps.EditAppTest" />
+    </classes>
+</test>
+</suite>

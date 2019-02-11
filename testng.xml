@@ -1,0 +1,21 @@
+<suite name = "smartfabric" parallel="false" >
+    <test name = "sanitycheck" configfailurepolicy="continue" parallel="false">
+        <classes>
+            <class name="ch.fabric.qa.applicationsettings.ApplicationSettingsTest" />
+            <class name="ch.fabric.qa.approvalmatrix.ApprovalMatrixTest" />
+            <class name="ch.fabric.qa.apps.AppTest" />
+            <class name="ch.fabric.qa.apps.EditAppTest" />
+            <class name="ch.fabric.qa.dashboard.DashboardTest" />
+            <class name="ch.fabric.qa.TestDbTest" />
+            <class name="ch.fabric.qa.LandingTest" />
+            <class name="ch.fabric.qa.LoginTest" />
+            <class name="ch.fabric.qa.reports.ActiveProcessesTest" />
+            <class name="ch.fabric.qa.reports.ActivityDetailsTest" />
+            <class name="ch.fabric.qa.reports.LoadTheReportInfoTest" />
+            <class name="ch.fabric.qa.reports.LoadTheReportsInterfaceTest" />
+            <class name="ch.fabric.qa.reports.SelectAnExistingAppWindowThresholdTest" />
+            <class name="ch.fabric.qa.tasks.TaskTest" />
+            </classes>>
+    </test>
+</suite>
+
