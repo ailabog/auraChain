@@ -8,8 +8,7 @@ import org.slf4j.LoggerFactory;
 
 import ch.fabric.qa.utils.WebDriverUtils;
 
-import static ch.fabric.qa.utils.WebDriverUtils.WAIT_1000_MILLISECONDS;
-import static ch.fabric.qa.utils.WebDriverUtils.WAIT_5000_MILLISECONDS;
+import static ch.fabric.qa.utils.WebDriverUtils.*;
 
 /**
  * Contains locators, methods specific to ApplicationSettings page
@@ -55,7 +54,7 @@ public class ApplicationSettingsPage extends BasePage {
     private By settingsLink = By.xpath("//a[text()='Settings']");
 
     private By componentsFromMarketplaceLink = By.partialLinkText("Marketplace");
-    private By syncBtn = By.xpath("div[text()='SYNC']");
+    private By syncBtn = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='SYNC']");
     private By settingsTable = By.id("settings");
     private By addManuallyUsersArrow = By.cssSelector(".manual-add-icon");
     private By uploadImgManuallyUser = By.xpath("//div//i[@class='cloud_upload']");
@@ -78,6 +77,20 @@ public class ApplicationSettingsPage extends BasePage {
     private By closeEditPanelArrow = By.xpath("//div[@data-v-8d24aea8]//i[text()='keyboard_arrow_left']/ancestor::button");
     private By saveOnEdit = By.xpath("//div[@data-v-67500b92]//div[text()='Save']/ancestor::button");
     private By saveAddUser = By.xpath("//div[text()='Save']/ancestor::button[not(contains(@class, 'at-main-save-btn'))]");
+    private By manuallyPasswordButton = By.xpath("//div[@class='q-toggle-handle row flex-center']");
+    private By newRoleAddUserSave = By.xpath("//div[@data-v-375d40de]//div[text()='Save']/ancestor::button");
+    private By browseRolesButton = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='Browse roles']");
+    private By browseRolesElementFromList = By.xpath("//span[@class='role-name']");
+    private By addRoleName = By.xpath("//input[@class='col q-input-target q-no-input-spinner ellipsis']");
+    private By permissionsSelectApp = By.xpath("//div[@class='col q-input-target ellipsis justify-start q-input-target-placeholder' and text()='Select application']");
+    private By selectAutomationTestLucianApp = By.xpath("//div[@class='q-item-label' and text()='AutomationTestLucian']");
+    private By newRoleAddUsersButton = By.xpath("//span[text()='Add users']/following::i");
+    private By newRoleSelectUserFromList = By.xpath("//span[text()='emil.savin@agys.ch']");
+    private By dateTimePickerApp = By.xpath("//h1[text()='DateTimePicker']");
+    private By buttonApiApp = By.xpath("//h1[text()='Button_API']");
+    private By installButtonAPIApp = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='INSTALL']");
+    private By removeButtonOnApp = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='REMOVE']");
+
     public static By checkTableRow = By.xpath("//table");
     protected ApplicationSettingsPage(WebDriver driver) {
         super(driver);
@@ -86,6 +99,98 @@ public class ApplicationSettingsPage extends BasePage {
     public void clickCreateNewRole() {
         logger.info("Creating new role...");
         WebDriverUtils.clickOnElementWithWait(driver, createNewRoleButton);
+    }
+
+    public void removeElements() {
+        logger.info("Click on the Remove button on an app...");
+        if (WebDriverUtils.findElement(driver, dateTimePickerApp) != null) {
+            WebDriverUtils.clickOnElementWithWait(driver, dateTimePickerApp);
+            WebDriverUtils.clickOnElementWithWait(driver, removeButtonOnApp);
+            logger.info("The app was successfully removed...");
+        } else {
+            logger.info("The remove button is not working as expected...");
+        }
+    }
+
+    public void installElements() {
+        logger.info("Clicking on the install button on an app...");
+        if (WebDriverUtils.findElement(driver, dateTimePickerApp) != null) {
+            WebDriverUtils.clickOnElementWithWait(driver, buttonApiApp);
+            WebDriverUtils.clickOnElementWithWait(driver, installButtonAPIApp);
+            logger.info("The app was successfully updated...");
+        } else {
+            logger.info("The update button is not working as expected...");
+        }
+    }
+
+    public void syncElements() {
+        logger.info("Click on components from marketplace tab...");
+        WebDriverUtils.clickOnElementWithWait(driver,componentsFromMarketplaceLink);
+        logger.info("Click on the Sync button...");
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, syncBtn);
+    }
+
+    public void createANewRole() {
+        logger.info("Click on create a new role button...");
+        WebDriverUtils.clickOnElementWithWait(driver, createNewRoleButton);
+        logger.info("Entering a new role name...");
+        WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
+        WebDriverUtils.enterTextBox(driver, addRoleName, "NewRoleNameTest");
+        logger.info("Click on add permissions button...");
+        WebDriverUtils.clickOnElementWithWait(driver, addPermissionIcon);
+        logger.info("Click and select an app from the drop down list...");
+        WebDriverUtils.clickOnElementWithWait(driver, permissionsSelectApp);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, selectAutomationTestLucianApp);
+        logger.info("Select the initiator leve...");
+        WebDriverUtils.clickOnElementWithWait(driver, levelsInitiator);
+        logger.info("Save the permissions tab...");
+        WebDriverUtils.clickOnElementWithWait(driver, saveRoleOnNew);
+        logger.info("Click on the Add user and select a new user from the drop down...");
+        WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUsersButton);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, newRoleSelectUserFromList);
+        WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUserSave);
+
+    }
+
+    public void browseRoles(){
+        logger.info("Click on the browse roles button...");
+        WebDriverUtils.clickOnElementWithWait(driver, browseRolesButton);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        logger.info("Check if the browse role button works...");
+        if (WebDriverUtils.findElement(driver, browseRolesElementFromList) != null) {
+            logger.info("The list gets populated with users...");
+        } else {
+            logger.info("The list is empty or the browse users button is not working as expected...");
+        }
+    }
+
+    public void addANewUser()  {
+        logger.info("Click on the add new user button...");
+        WebDriverUtils.clickOnElementWithWait(driver, addUser);
+        logger.info("Entering the first name...");
+        WebDriverUtils.clickOnElementWithWait(driver, firstNameTextBox);
+        WebDriverUtils.enterTextBox(driver, firstNameTextBox, "FirstNameTest");
+        logger.info("Entering the last name...");
+        WebDriverUtils.clickOnElementWithWait(driver, lastNameTextBox);
+        WebDriverUtils.enterTextBox(driver, lastNameTextBox, "LastNameTest");
+        logger.info("Entering the email...");
+        WebDriverUtils.clickOnElementWithWait(driver, emailAddressTextBox);
+        WebDriverUtils.enterTextBox(driver, emailAddressTextBox, "email@test.com");
+        logger.info("Selecting the male gender...");
+        WebDriverUtils.clickOnElementWithWait(driver, maleRadioButton);
+        logger.info("Click on the manually set password button...");
+        WebDriverUtils.clickOnElementWithWait(driver, manuallyPasswordButton);
+        WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
+        logger.info("Manually setting the password...");
+        WebDriverUtils.clickOnElementWithWait(driver, passwordTxtBoxSetManually);
+        WebDriverUtils.enterTextBox(driver, passwordTxtBoxSetManually, "testpassword");
+        logger.info("Saving the changes...");
+        WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUserSave);
+
     }
 
     public void clickAddNewUser() {
