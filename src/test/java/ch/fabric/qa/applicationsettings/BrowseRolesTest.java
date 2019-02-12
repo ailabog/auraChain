@@ -22,7 +22,7 @@ public class BrowseRolesTest extends BaseTest {
 	private ManageDocumentsPage manageDocumentsPage;
 	private ManageUIsPage manageUIsPage;
 	private ComponentsFromMarketplacePage componentsFromMarketplacePage;
-	private SettingsPage settingsPage;
+	private SettingsPageTest settingsPage;
 	private static final String USER_TO_BE_SEARCHED = "string123";
 	private static final String ROLE_NAME = "My Role";
 	private static final String PASSWORD = GenerateRandomData.generateRandomString(10);
