@@ -17,6 +17,7 @@ import ch.fabric.qa.BaseTest;
 import ch.fabric.qa.utils.CredentialsUtils;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -123,11 +124,11 @@ public class ApprovalMatrixTest extends BaseTest {
 
     }
 
-//    @AfterTest
-//    public void tearDown() {
-//        loginPage.quit();
-//        landingPage.quit();
-//        appsPage.quit();
-//        diagramsPage.quit();
-//    }
+    @AfterTest
+    public void tearDown() {
+        loginPage.quit();
+        landingPage.quit();
+        appsPage.quit();
+        diagramsPage.quit();
+    }
 }
