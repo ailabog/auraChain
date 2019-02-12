@@ -37,6 +37,7 @@ public class ReportsPage extends BasePage {
 
     public void compareStatusNameField(){
         if(WebDriverUtils.getElementText(driver, statusNameField).equals(DiagramsPage.STATUS_NAME_FIELD)){
+            WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
             logger.info("Test passed");
         }
         else{
