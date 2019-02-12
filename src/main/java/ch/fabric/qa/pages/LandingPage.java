@@ -47,6 +47,10 @@ public class LandingPage extends BasePage {
         super(driver);
     }
 
+    public void checkRole() {
+        logger.info("Checking the user role...");
+    }
+
     public void changeNotificationSettings() {
         logger.info("Click on the profile icon...");
         WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
