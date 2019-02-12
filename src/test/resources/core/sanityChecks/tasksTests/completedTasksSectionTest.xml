@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="completedTasksSectionTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+<test name="completedTasksSectionTest" >
+    <classes>
+        <class name="ch.fabric.qa.tasks.CompletedTasksSectionTest" />
+    </classes>
+</test>
+</suite>
