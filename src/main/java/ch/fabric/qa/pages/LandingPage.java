@@ -29,10 +29,75 @@ public class LandingPage extends BasePage {
     private By applicationSettingsText = By.xpath("//span[text()='Application Settings']");
     private By activeTasks = By.xpath("//div//div[text()='My active tasks']");
     private By completedTasks = By.xpath("//div//div[text()='My completed tasks']");
-
+    private By profileIcon = By.xpath("//div[@class='at-main-user-profile']");
+    private By logoutButton = By.xpath("//div[text()='Logout']");
+    private By myAccountButton = By.xpath("//button[@class='q-btn inline relative-position q-btn-item non-selectable col btn-rect q-btn-rectangle q-btn-flat q-focusable q-hoverable']//div[text()='My account']");
+    private By changeInformationButton = By.xpath("//div[contains(text(), 'Change information')]");
+    private By notification1 = By.xpath("//span[text()='Notify me each time I am assigned a task']");
+    private By notification2 = By.xpath("//span[text()='Notify me each time a task is assigned to a role I am in']");
+    private By notification3 = By.xpath("//span[text()='Notify me each time an application I own is run']");
+    private By notification4 = By.xpath("//span[text()='Notify me each time a diagram I worked on is modified']");
+    private By notification5 = By.xpath("//span[text()='Notify me each time an interface is added']");
+    private By notification6 = By.xpath("//span[text()='Notify me each time an interface I have worked on is modified']");
+    private By notification7 = By.xpath("//span[contains(text(), 'Via email at')]");
+    private By notification8 = By.xpath("//span[contains(text(), 'Via SMS at')]");
+    private By notification9 = By.xpath("//span[text()='Regular in-app notifications']");
 
     protected LandingPage(WebDriver driver) {
         super(driver);
+    }
+
+    public void changeNotificationSettings() {
+        logger.info("Click on the profile icon...");
+        WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
+        logger.info("Click on the My Account button...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, myAccountButton);
+        logger.info("Change Notify me each time I am assigned a task ...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification1);
+        logger.info("Change Notify me each time a task is assigned to a role I am in...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification2);
+        logger.info("Change Notify me each time an application I own is run...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification3);
+        logger.info("Change Notify me each time a diagram I worked on is modified...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification4);
+        logger.info("Change Notify me each time an interface is added...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification5);
+        logger.info("Change Notify me each time an interface I have worked on is modified...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification6);
+        logger.info("Change Via email at undefined...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification7);
+        logger.info("Change Via SMS at undefined...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification8);
+        logger.info("Change Regular in-app notifications...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, notification9);
+    }
+
+    public void changeUserInformation() {
+        logger.info("Click on the profile icon...");
+        WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
+        logger.info("Click on the My Account button...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, myAccountButton);
+        logger.info("Click on the Change information button...");
+        WebDriverUtils.clickOnElementWithWait(driver, changeInformationButton);
+    }
+
+    public void userLogOut () {
+        logger.info("Click on the profile icon...");
+        WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
+        logger.info("Click on hte logout button...");
+        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, logoutButton);
     }
 
     public void clickApps() {

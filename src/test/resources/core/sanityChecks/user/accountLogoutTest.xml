@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="accountLogoutTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+<test name="accountLogoutTest" >
+    <classes>
+        <class name="ch.fabric.qa.user.AccountLogoutTest" />
+    </classes>
+</test>
+</suite>

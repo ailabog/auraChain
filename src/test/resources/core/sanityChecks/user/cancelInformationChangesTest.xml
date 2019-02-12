@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="cancelInformationChangesTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+<test name="cancelInformationChangesTest" >
+    <classes>
+        <class name="ch.fabric.qa.user.CancelInformationChangesTest" />
+    </classes>
+</test>
+</suite>
