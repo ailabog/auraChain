@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static ch.fabric.qa.utils.WebDriverUtils.WAIT_1000_MILLISECONDS;
 import static ch.fabric.qa.utils.WebDriverUtils.WAIT_2000_MILLISECONDS;
 
 /**
@@ -235,7 +236,7 @@ public class DiagramsPage extends BasePage {
     private static By continueIfRejected2 = By.xpath("/html/body/div[5]/div[2]/div/div[2]/div/div[3]/div/div[3]/div/div[2]/div/div[2]/div/div[3]/div[6]/div/div/div/div/span");
     private static By varLabelTaskSubject = By.xpath("//button[@class='q-btn inline relative-position q-btn-item non-selectable bg-orange at-task-subject-btn q-btn-rectangle q-btn-flat q-focusable q-hoverable text-white']");
     private static By DataModelVarTaskSubject = By.xpath("//div[@class='q-item-label' and contains (text(),'primaclas')]");
-    private static By DataModelAttributeTskSubject = By.xpath("//div[@class='q-item-label' and contains (text(),'primaclass.primuatribut (String)')]");
+    private static By DataModelAttributeTskSubject = By.xpath("//div[contains(text(), 'primaclas.primuatribut (String)')]");
     private static By InstanceIDTaskSubjectVariable = By.xpath("//div[@class='q-item-label' and contains (text(),'ProcessInstance')]");
     private static By InstanceIDTaskSubjectVariable2 = By.xpath("//div[@class='q-item-label' and contains (text(),'ProcessInstance.id (String)')]");
     private static By TaskSubjectSaveButton = By.xpath("//button[@class='q-btn inline relative-position q-btn-item non-selectable q-btn-rectangle q-focusable q-hoverable bg-primary text-white']//div[text()='Save']");
@@ -244,7 +245,7 @@ public class DiagramsPage extends BasePage {
     private static By varLabelInstanceName = By.xpath("//button[@class='q-btn inline relative-position q-btn-item non-selectable bg-orange at-task-instance-btn q-btn-rectangle q-btn-flat q-focusable q-hoverable text-white']");
     private static By deadlineTimeUnit = By.xpath("//div[@class='q-if row no-wrap relative-position q-select q-if-focusable q-if-hide-underline q-if-standard q-if-has-content text-primary']");
     private static By statusCode = By.xpath("//div[@class='row no-wrap relative-position' and .//div[text()='Status code']]//following-sibling::input[@class='col q-input-target q-no-input-spinner ellipsis']");
-
+    private static By primaclasPrimuatributString = By.xpath("//div[contains(text(), 'primaclas.primuatribut (String)')]");
 
     public static final String STATUS_NAME_FIELD = "StatusNameField";
 
@@ -769,8 +770,8 @@ public class DiagramsPage extends BasePage {
         WebDriverUtils.enterTextBox(super.driver, customSubjectTextArea, customTaskSubject);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         logger.info("Accessing variables in task subject..");
+        WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, varLabelTaskSubject);
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         logger.info("Checking a variable in table..");
         WebDriverUtils.enterTextBox(super.driver, tableVariables,DataModelvarValue );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
@@ -780,6 +781,9 @@ public class DiagramsPage extends BasePage {
         logger.info("Choosing the Data Model attribute");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelAttributeTskSubject);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
+//        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
+//        logger.info("Click on a variable...");
+//        WebDriverUtils.clickOnElementWithWait(super.driver, primaclasPrimuatributString);
         logger.info("Switching to Variables tab");
         WebDriverUtils.clickOnElementWithWait(super.driver, variablesTab);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
@@ -933,34 +937,6 @@ public class DiagramsPage extends BasePage {
         logger.info("Inserting connector status code");
         WebDriverUtils.enterTextBox(super.driver, connectorStatusCode, connectorStatusCodeValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-    }
-
-    public void firstHumanTaskTargetElementAddNotifications(String connectorNotificationNameValue)  {
-        logger.info("Accessing the notifications panel..");
-        WebDriverUtils.clickOnElementWithWait(super.driver, addTargetNotifications);
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Inserting name for connector's notification");
-        WebDriverUtils.enterTextBox(super.driver, connectorNotificationName, connectorNotificationNameValue);
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Adding email receipt TO..");
-        WebDriverUtils.clickOnElementWithWait(super.driver, connectorNotificationReceiptTO);
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting data model value..");
-        WebDriverUtils.clickOnElementWithWait(super.driver, DataModelVarTaskSubject );
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting data model attribute..");
-        WebDriverUtils.clickOnElementWithWait(super.driver, dataModelAtributeEmail);
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Adding email receipt CC");
-        WebDriverUtils.clickOnElementWithWait(super.driver, connectorNotificationReceiptCC);
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting data model value..");
-        WebDriverUtils.clickOnElementWithWait(super.driver, dataModelCCclassName );
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting Data Model attribute..");
-        WebDriverUtils.clickOnElementWithWait(super.driver,dataModelCCAtributeName );
-        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-
     }
 
     public void enterStatusNameField() {
