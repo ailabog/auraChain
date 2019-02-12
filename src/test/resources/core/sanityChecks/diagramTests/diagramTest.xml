@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="diagramTest" verbose="1" >
+    <parameter name="environment" value="${environment}" />
+	<test name="diagramTest" >
+       <classes>
+                 <class name="ch.fabric.qa.diagrams.DiagramTest" />
+       </classes>
+     </test>
+</suite>
