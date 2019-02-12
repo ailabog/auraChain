@@ -30,6 +30,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    public void enterUsernameAndPassword(String usernameValue, String passwordValue) {
+        logger.info("Entering username...");
+        WebDriverUtils.enterTextBox(driver, usernameTextBox, usernameValue);
+        logger.info("Entering password...");
+        WebDriverUtils.enterTextBox(driver, passwordTextBox, passwordValue);
+    }
+
     public void usernameLogin(String usernameValue) {
         logger.info("Clearing username value...");
         WebDriverUtils.clearElement(driver, usernameTextBox);
