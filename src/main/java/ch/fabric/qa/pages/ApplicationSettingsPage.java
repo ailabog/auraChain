@@ -90,15 +90,33 @@ public class ApplicationSettingsPage extends BasePage {
     private By buttonApiApp = By.xpath("//h1[text()='Button_API']");
     private By installButtonAPIApp = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='INSTALL']");
     private By removeButtonOnApp = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='REMOVE']");
+    private By updateButtonSegment2App = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='UPDATE']");
+    private By segment2App = By.xpath("//h1[text()='Segment2']");
 
     public static By checkTableRow = By.xpath("//table");
     protected ApplicationSettingsPage(WebDriver driver) {
         super(driver);
     }
 
+    public void updateElements() {
+        logger.info("Clicking on the update button on an app...");
+        if (WebDriverUtils.findElement(driver, segment2App) == null) {
+            WebDriverUtils.clickOnElementWithWait(driver, segment2App);
+            WebDriverUtils.clickOnElementWithWait(driver, updateButtonSegment2App);
+            logger.info("The app was successfully installed...");
+        } else {
+            logger.info("The install button is not working as expected or not existing on any app...");
+        }
+    }
+
     public void clickCreateNewRole() {
         logger.info("Creating new role...");
         WebDriverUtils.clickOnElementWithWait(driver, createNewRoleButton);
+    }
+
+    public void accessSettingsPage() {
+        logger.info("Accessing the settings page...");
+        WebDriverUtils.clickOnElementWithWait(driver, settingsLink);
     }
 
     public void removeElements() {
