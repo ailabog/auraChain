@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="previewADocumentTemplateTest" verbose="1" >
+    <parameter name="environment" value="${environment}" />
+	<test name="previewADocumentTemplateTest" >
+       <classes>
+                 <class name="ch.fabric.qa.documents.PreviewADocumentTemplateTest" />
+       </classes>
+     </test>
+</suite>
