@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="loadTheReportsInterfaceTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+<test name="loadTheReportsInterfaceTest" >
+    <classes>
+        <class name="ch.fabric.qa.reports.LoadTheReportsInterfaceTest" />
+    </classes>
+</test>
+</suite>
