@@ -80,6 +80,6 @@ public class DiagramTest {
 		loginPage.quit();
 		landingPage.quit();
 		diagramsPage.quit();
-		//interfaceBuilderPage.quit();
+		interfaceBuilderPage.quit();
 	}
 }

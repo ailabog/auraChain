@@ -54,10 +54,10 @@ public class SyncElementsTest extends BaseTest {
 
 	}
 
-//	@AfterTest
-//	public void tearDown() {
-//		loginPage.quit();
-//		landingPage.quit();
-//		applicationSettingsPage.quit();
-//	}
+	@AfterTest
+	public void tearDown() {
+		loginPage.quit();
+		landingPage.quit();
+		applicationSettingsPage.quit();
+	}
 }

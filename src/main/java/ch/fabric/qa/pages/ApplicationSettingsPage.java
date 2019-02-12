@@ -78,7 +78,7 @@ public class ApplicationSettingsPage extends BasePage {
     private By saveOnEdit = By.xpath("//div[@data-v-67500b92]//div[text()='Save']/ancestor::button");
     private By saveAddUser = By.xpath("//div[text()='Save']/ancestor::button[not(contains(@class, 'at-main-save-btn'))]");
     private By manuallyPasswordButton = By.xpath("//div[@class='q-toggle-handle row flex-center']");
-    private By newRoleAddUserSave = By.xpath("//div[@data-v-375d40de]//div[text()='Save']/ancestor::button");
+    private By newRoleAddUserSave = By.xpath("//div[text()='Save']");
     private By browseRolesButton = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='Browse roles']");
     private By browseRolesElementFromList = By.xpath("//span[@class='role-name']");
     private By addRoleName = By.xpath("//input[@class='col q-input-target q-no-input-spinner ellipsis']");

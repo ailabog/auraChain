@@ -199,7 +199,7 @@ public class DiagramsPage extends BasePage {
     private static By addLevelButton = By.xpath("//span[text()='Add level']");
     private static By levelApprovalTime = By.xpath("//input[@class='col q-input-target q-no-input-spinner ellipsis']");
     private static By hoursDropDown = By.xpath("//div[@class='col q-input-target ellipsis justify-start' and text()='Hours']");
-    private static By hoursOptionInDropDown = By.xpath("//div[@class='row no-wrap relative-position']//div[text()='Hours']");
+    private static By hoursOptionInDropDown = By.xpath("//div[@class='q-item-label' and text()='Hours']");
     private static By ifExpiresDropDwon = By.xpath("//div[@data-v-351ffa4b and @data-v-35ffc78b]");
     private static By propagatePreviousDecision = By.xpath("//div[@class='q-item-label' and text()='Propagate previous decision']");
     private static By continueIfRejected = By.xpath("//i[@class='q-icon q-checkbox-icon cursor-pointer material-icons']");
