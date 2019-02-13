@@ -3,6 +3,7 @@ package ch.fabric.qa.pages.sidebarpages;
 import ch.fabric.qa.interfaces.Sidebar;
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -14,9 +15,9 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class ApisPage extends BasePage  {
 
-    private static Logger logger = LoggerFactory.getLogger(ApisPage.class);
 
     private static By addNewApiBtn = By.xpath("//button//div[text()=' ADD NEW ']");
     private static By consumedLink = By.xpath("//button//div[text()='Consumed']");
@@ -53,47 +54,47 @@ public class ApisPage extends BasePage  {
     }
 
     public void addNewApi() {
-        logger.info("Adding new API..");
+        log.info("Adding new API..");
         WebDriverUtils.clickOnElementWithWait(super.driver, addNewApiBtn);
     }
 
     public void clickConsumed() {
-        logger.info("Go to Consumed APIs list..");
+        log.info("Go to Consumed APIs list..");
         WebDriverUtils.clickOnElementWithWait(super.driver, consumedLink);
     }
 
     public void clickExposedc() {
-        logger.info("Accessing exposed APIs..");
+        log.info("Accessing exposed APIs..");
         WebDriverUtils.clickOnElementWithWait(super.driver, exposedLink);
     }
 
     public void goToConsumed() {
-        logger.info("Go to Consumed APISs..");
+        log.info("Go to Consumed APISs..");
         WebDriverUtils.clickOnElementWithWait(super.driver, consumedBtn);
     }
 
     public void goToExposed() {
-        logger.info("Go to Exposed APISs..");
+        log.info("Go to Exposed APISs..");
         WebDriverUtils.clickOnElementWithWait(super.driver, exposedBtn);
     }
 
     public void eneterNameApi(String ApiName) {
-        logger.info("Entering name for my API...");
+        log.info("Entering name for my API...");
         WebDriverUtils.enterTextBox(super.driver, nameApi, ApiName);
     }
 
     public void eneterURLApi(String ApiURL) {
-        logger.info("Entering URL for my API...");
+        log.info("Entering URL for my API...");
         WebDriverUtils.enterTextBox(super.driver, URLApi, ApiURL);
     }
 
     public void eneterDescriptionApi(String descriptionApiValue) {
-        logger.info("Entering description for my API...");
+        log.info("Entering description for my API...");
         WebDriverUtils.enterTextBox(super.driver, descriptionApi, descriptionApiValue);
     }
 
     public void selectTypeApi() {
-        logger.info("Selecting type element..");
+        log.info("Selecting type element..");
         WebDriverUtils.clickOnElementWithWait(super.driver, typeApi);
     }
 
@@ -122,9 +123,9 @@ public class ApisPage extends BasePage  {
     }
 
     public void enterUsername(String usernameValue, String passwordValue) {
-        logger.info("Entering username..");
+        log.info("Entering username..");
         WebDriverUtils.enterTextBox(super.driver, usernameTxt, usernameValue);
-        logger.info("Entering poassword..");
+        log.info("Entering poassword..");
         WebDriverUtils.enterTextBox(super.driver, passwordTxt, passwordValue);
     }
 
@@ -133,11 +134,11 @@ public class ApisPage extends BasePage  {
     }
 
     public void oauth2Info(String clientIdValue, String clientSecretValue, String baseURLValue) {
-        logger.info("Entering Client ID..");
+        log.info("Entering Client ID..");
         WebDriverUtils.enterTextBox(super.driver, clientId, clientIdValue);
-        logger.info("Entering Client Secret..");
+        log.info("Entering Client Secret..");
         WebDriverUtils.enterTextBox(super.driver, clientSecret, clientSecretValue);
-        logger.info("Entering Base URL..");
+        log.info("Entering Base URL..");
         WebDriverUtils.enterTextBox(super.driver, baseURL, baseURLValue);
     }
 

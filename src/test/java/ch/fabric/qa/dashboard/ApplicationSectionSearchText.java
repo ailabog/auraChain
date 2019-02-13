@@ -2,39 +2,35 @@ package ch.fabric.qa.dashboard;
 
 
 import ch.fabric.qa.BaseTest;
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.DashboardPage;
 import ch.fabric.qa.pages.LandingPage;
 import ch.fabric.qa.pages.LoginPage;
 import ch.fabric.qa.utils.CredentialsUtils;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+@Slf4j
 public class ApplicationSectionSearchText extends BaseTest {
 
 	private LoginPage loginPage;
 	private DashboardPage dashboardPage;
 	private LandingPage landingPage;
-	private Environments environment;
 
-	@Parameters({"environment"})
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
-		this.environment = environment == null ? Environments.TEST : Environments.valueOf(environment);
 	}
 
 	@Test
 	public void C1112ApplicationSearch() {
-		logger.info("Starting the application section search test..");
+		log.info("Starting the application section search test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		dashboardPage = landingPage.returnDashboardPage();
 		dashboardPage.applicationSearchBar();

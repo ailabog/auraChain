@@ -1,6 +1,5 @@
 package ch.fabric.qa.diagrams;
 
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.AppsPage;
 import ch.fabric.qa.pages.LandingPage;
 import ch.fabric.qa.pages.LoginPage;
@@ -8,6 +7,7 @@ import ch.fabric.qa.pages.sidebarpages.DiagramsPage;
 import ch.fabric.qa.pages.sidebarpages.InterfaceBuilderPage;
 import ch.fabric.qa.utils.CredentialsUtils;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -16,10 +16,10 @@ import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
 
+@Slf4j
 public class DiagramTest {
 
 	private LoginPage loginPage;
-	private Environments environment;
 	private LandingPage landingPage;
 	private AppsPage appsPage;
 	private DiagramsPage diagramsPage;
@@ -40,19 +40,15 @@ public class DiagramTest {
 	private static final String DIAGRAMS_SET_CONNECTOR_STS_CODE = "002";
 	private static final String DIAGRAMS_SET_CONNECTOR_NOTIFICATION_NAME = "Notification connector name";
 
-	@Parameters({ "environment"})
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
-		this.environment = environment == null? Environments.TEST : Environments.valueOf(environment);
 	}
 
 	@Test
 	public void C1015EditTheDetailsForATaskObject() throws FileNotFoundException {
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		appsPage = landingPage.returnAppsPage();
@@ -80,6 +76,6 @@ public class DiagramTest {
 		loginPage.quit();
 		landingPage.quit();
 		diagramsPage.quit();
-		//interfaceBuilderPage.quit();
+		interfaceBuilderPage.quit();
 	}
 }

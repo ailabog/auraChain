@@ -1,5 +1,7 @@
 package ch.fabric.qa.pages;
 
+import ch.fabric.qa.utils.CredentialsUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,9 +17,8 @@ import ch.fabric.qa.utils.WebDriverUtils;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class LoginPage extends BasePage {
-
-    protected static final Logger logger = LoggerFactory.getLogger(LoginPage.class);
 
     private By usernameTextBox = By
             .xpath("//input[@name='username']");
@@ -31,31 +32,36 @@ public class LoginPage extends BasePage {
     }
 
     public void enterUsernameAndPassword(String usernameValue, String passwordValue) {
-        logger.info("Entering username...");
+        log.info("Entering username...");
         WebDriverUtils.enterTextBox(driver, usernameTextBox, usernameValue);
-        logger.info("Entering password...");
+        log.info("Entering password...");
         WebDriverUtils.enterTextBox(driver, passwordTextBox, passwordValue);
     }
 
-    public void usernameLogin(String usernameValue) {
-        logger.info("Clearing username value...");
+    private void usernameLogin(String usernameValue) {
+        log.info("Clearing username value...");
         WebDriverUtils.clearElement(driver, usernameTextBox);
         ((JavascriptExecutor) driver).executeScript("document.querySelector('input[name=username]').dispatchEvent(new Event('input'))");
-        logger.info("Entering username...");
+        log.info("Entering username...");
         WebDriverUtils.enterTextBox(driver, usernameTextBox, usernameValue);
     }
 
-    public void passwordLogin (String passwordValue) {
-        logger.info("Clearing password value...");
+    private void passwordLogin (String passwordValue) {
+        log.info("Clearing password value...");
         WebDriverUtils.clearElement(driver, passwordTextBox);
         ((JavascriptExecutor) driver).executeScript("document.querySelector('input[name=username]').dispatchEvent(new Event('input'))");
-        logger.info("Entering password...");
+        log.info("Entering password...");
         WebDriverUtils.enterTextBox(driver, passwordTextBox, passwordValue);
 //        WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_5000_MILLISECONDS);
     }
 
     public void login() {
-        logger.info("Logging into Smart Fabric...");
+        load(CredentialsUtils.getProperty("url"));
+
+        usernameLogin(CredentialsUtils.getProperty("username"));
+        passwordLogin(CredentialsUtils.getProperty("password"));
+
+        log.info("Logging into Smart Fabric...");
         WebDriverUtils.clickOnElementWithWait(driver, loginButton);
     }
 

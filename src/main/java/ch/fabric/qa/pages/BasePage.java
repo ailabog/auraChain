@@ -1,5 +1,6 @@
 package ch.fabric.qa.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.slf4j.Logger;
@@ -14,9 +15,9 @@ import ch.fabric.qa.utils.WebDriverUtils;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public abstract class BasePage {
 
-	private static final Logger logger = LoggerFactory.getLogger(BasePage.class);
 	private SoftAssert softAssert = new SoftAssert();
 	final protected WebDriver driver;
 
@@ -29,17 +30,17 @@ public abstract class BasePage {
 	}
 
 	public void load(String url) {
-		logger.info("Loading page {}", url);
+		log.info("Loading page {}", url);
 		WebDriverUtils.load(driver, url);
 		WebDriverUtils.maximizeWindow(driver);
-		logger.info("Page {} loaded", url);
+		log.info("Page {} loaded", url);
 	}
 
 	protected Object[] assertAll(WebDriver driver, SoftAssert softAssert) {
 		try {
 			softAssert.assertAll();
 		} catch (AssertionError e) {
-			logger.error("Soft assert failed: {} ", e.toString());
+			log.error("Soft assert failed: {} ", e.toString());
 			driver.quit();
 			throw new WebDriverException(e);
 		}
@@ -54,6 +55,6 @@ public abstract class BasePage {
 
 	@AfterMethod
 	public void test() {
-		logger.info("End of test...", assertAll(driver, softAssert));
+		log.info("End of test...", assertAll(driver, softAssert));
 	}
 }

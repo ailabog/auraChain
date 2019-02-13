@@ -1,6 +1,7 @@
 package ch.fabric.qa.pages;
 
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.slf4j.Logger;
@@ -14,9 +15,8 @@ import org.testng.Assert;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class TasksPage extends BasePage {
-
-    protected static final Logger logger = LoggerFactory.getLogger(ManageAppsPage.class);
 
     private By myActiveTasksTab = By.xpath("//div[text()='My open tasks']");
     private By myCompletedTasksTab = By.xpath("//div[text()='Completed tasks']");
@@ -41,57 +41,57 @@ public class TasksPage extends BasePage {
 
 
     public void startAnyTask() {
-        logger.info("Click on the arrow from the right to start any available task...");
+        log.info("Click on the arrow from the right to start any available task...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, startAnyTaskArrowRight);
     }
 
     public void clickCompletedTasksTab() {
-        logger.info("Click on the completed tasks tab...");
+        log.info("Click on the completed tasks tab...");
         WebDriverUtils.clickOnElementWithWait(driver, completedTasksTab);
         if (WebDriverUtils.findElement(driver, completedTasksTitle) != null) {
-            logger.info("The completed tasks page successfully opened...");
+            log.info("The completed tasks page successfully opened...");
         } else {
             Assert.assertEquals("Test failed...", "The completed tasks page didn't open...");
         }
     }
 
     public void searchForTask() {
-        logger.info("Click on the search bar...");
+        log.info("Click on the search bar...");
         WebDriverUtils.clickOnElementWithWait(driver, searchBarIcon);
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, searchBar);
         WebDriverUtils.enterTextBox(driver, searchBar, "Approval");
         if (WebDriverUtils.findElement(driver, taskSearchApprovalCheck) != null) {
-            logger.info("A task name containing the element Approval exists...");
+            log.info("A task name containing the element Approval exists...");
         } else {
             Assert.assertEquals("Test failed...", "The Search bar doesn't work...");
         }
     }
 
     public void filterByApplications() {
-        logger.info("Filter the tasks by Applications drop down...");
+        log.info("Filter the tasks by Applications drop down...");
         WebDriverUtils.clickOnElementWithWait(driver, allApplicationsDropDown);
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choose All Applications option from the drop down list...");
+        log.info("Choose All Applications option from the drop down list...");
         WebDriverUtils.clickOnElementWithWait(driver, allApplicationsDropDownOption);
-        logger.info("Filter the tasks by Display drop down...");
+        log.info("Filter the tasks by Display drop down...");
         WebDriverUtils.clickOnElementWithWait(driver, displayDropDown);
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choose Display option from the drop down list...");
+        log.info("Choose Display option from the drop down list...");
         WebDriverUtils.clickOnElementWithWait(driver, getDisplayDropDownOption);
     }
 
     public void chooseNoOfRecordsPerPage() {
-        logger.info("Click on the records per page drop down...");
+        log.info("Click on the records per page drop down...");
         WebDriverUtils.clickOnElementWithWait(driver, recordsPerPageDropDown);
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choose the value 20...");
+        log.info("Choose the value 20...");
         WebDriverUtils.clickOnElementWithWait(driver, recordsPerPage20Option);
     }
 
     public void goToMyOpenTasks() {
-        logger.info("Go to My active tasks..");
+        log.info("Go to My active tasks..");
         WebDriverUtils.clickOnElementWithWait(driver, myActiveTasksTab);
     }
 
@@ -105,7 +105,7 @@ public class TasksPage extends BasePage {
     }
 
     public void goTOMyCompletedTasks() {
-        logger.info("Go to My completed tasks..");
+        log.info("Go to My completed tasks..");
         WebDriverUtils.clickOnElementWithWait(driver, myCompletedTasksTab);
     }
 }

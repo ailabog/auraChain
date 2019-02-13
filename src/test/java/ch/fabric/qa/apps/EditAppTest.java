@@ -1,13 +1,13 @@
 package ch.fabric.qa.apps;
 
 import ch.fabric.qa.interfaces.Save;
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.AppsPage;
 import ch.fabric.qa.pages.LandingPage;
 import ch.fabric.qa.pages.LoginPage;
 import ch.fabric.qa.pages.sidebarpages.DiagramsPage;
 import ch.fabric.qa.utils.CredentialsUtils;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -20,10 +20,10 @@ import ch.fabric.qa.BaseTest;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class EditAppTest extends BaseTest{
 
 	private LoginPage loginPage;
-	private Environments environment;
 	private LandingPage landingPage;
 	private AppsPage appsPage;
 	private DiagramsPage diagramsPage;
@@ -32,20 +32,16 @@ public class EditAppTest extends BaseTest{
 	private static final String EXPECTED_TEXT = "17/1/12/29/10";
 	//private static final String DESCRIPTION_TEXT = GenerateRandomData.generateRandomString(8);
 
-	@Parameters({ "environment"})
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
-		this.environment = environment == null? Environments.TEST : Environments.valueOf(environment);
 	}
 
 	@Test
 	public void editApp(){
-		logger.info("Starting editing an existing application test..");
+		log.info("Starting editing an existing application test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		appsPage = landingPage.returnAppsPage();
@@ -58,7 +54,7 @@ public class EditAppTest extends BaseTest{
 		diagramsPage = appsPage.goToDiagramsPageFromAppsPage();
 		Save.setDriver(loginPage.getDriver()).save();
 		diagramsPage.savedMessageVisible();
-		logger.info("Finishing editing an appliocation test..");
+		log.info("Finishing editing an appliocation test..");
    }
 
 	@AfterTest

@@ -3,6 +3,7 @@ package ch.fabric.qa.pages.sidebarpages;
 import ch.fabric.qa.interfaces.Sidebar;
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -15,6 +16,7 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class BlockchainPage extends BasePage {
 
     private static By arrowAddFunction = By.xpath("//i[text()='arrow_right']");
@@ -61,35 +63,34 @@ public class BlockchainPage extends BasePage {
         return super.driver;
     }
 
-    public static Logger logger = LoggerFactory.getLogger(BlockchainPage.class);
 
     public void clickAddFunctionArrow() {
-        logger.info("Go to Add function..");
+        log.info("Go to Add function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, arrowAddFunction);
     }
 
     public void goToDetailstab() {
-        logger.info("Go to Detail Tab..");
+        log.info("Go to Detail Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, detailsTab);
     }
 
     public void goToParametersTab() {
-        logger.info("Go to Detail Tab..");
+        log.info("Go to Detail Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, parametersTab);
     }
 
     public void goToReturnVariablesTab() {
-        logger.info("Go to Detail Tab..");
+        log.info("Go to Detail Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, returnVariablesTab);
     }
 
     public void enterFunctionName(String functionNameValue) {
-        logger.info("Entering function name..");
+        log.info("Entering function name..");
         WebDriverUtils.enterTextBox(super.driver, functionNameTxtBox, functionNameValue);
     }
 
     public void enterFunctionDescription(String functionDescriptionValue) {
-        logger.info("Entering function description..");
+        log.info("Entering function description..");
         WebDriverUtils.enterTextBox(super.driver, functionDescriptionTxtBox, functionDescriptionValue);
     }
 
@@ -98,17 +99,17 @@ public class BlockchainPage extends BasePage {
     }
 
     public void removeFunction() {
-        logger.info("Removing my function..");
+        log.info("Removing my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, cancelActionFunction);
     }
 
     public void removeNoFunction() {
-        logger.info("Not removing my function..");
+        log.info("Not removing my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, removeNoAction);
     }
 
     public void removeYesFunction() {
-        logger.info("Actual removing my function..");
+        log.info("Actual removing my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, removeYesAction);
     }
 
@@ -117,62 +118,62 @@ public class BlockchainPage extends BasePage {
     }
 
     public void deleteFunction() {
-        logger.info("Deleting my function..");
+        log.info("Deleting my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, deleteActionFunction);
     }
 
     public void editFunction() {
-        logger.info("Editing my function..");
+        log.info("Editing my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, editActionFunction);
     }
 
     public void previewFunction() {
-        logger.info("Previewing my function..");
+        log.info("Previewing my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, previewActionFunction);
     }
 
     public void selectVar() {
-        logger.info("Previewing my function..");
+        log.info("Previewing my function..");
         WebDriverUtils.clickOnElementWithWait(super.driver, noVarAvailable);
     }
 
     public void editAssignment() {
-        logger.info("Adding new declaration..");
+        log.info("Adding new declaration..");
         WebDriverUtils.clickOnElementWithWait(super.driver, editAssign);
     }
 
     public void deleteAssignment() {
-        logger.info("Adding new declaration..");
+        log.info("Adding new declaration..");
         WebDriverUtils.clickOnElementWithWait(super.driver, deleteAssign);
     }
 
     public void clickAddAssignment() {
-        logger.info("Adding an assignment..");
+        log.info("Adding an assignment..");
         WebDriverUtils.clickOnElementWithWait(super.driver, addAssignment);
     }
 
     public void enterDescription(String descriptionAssignValue) {
-        logger.info("Entering description for my assignment..");
+        log.info("Entering description for my assignment..");
         WebDriverUtils.enterTextBox(super.driver, descriptionAssign, descriptionAssignValue);
     }
 
     public void enterExpession(String expressionAssignValue) {
-        logger.info("Entering description for my assignment..");
+        log.info("Entering description for my assignment..");
         WebDriverUtils.enterTextBox(super.driver, expressionTxtBox, expressionAssignValue);
     }
 
     public void clickAddDeclaration() {
-        logger.info("Adding new declaration..");
+        log.info("Adding new declaration..");
         WebDriverUtils.clickOnElementWithWait(super.driver, addDeclarationBtmn);
     }
 
     public void expandDeclaration() {
-        logger.info("Expanding declaration..");
+        log.info("Expanding declaration..");
         WebDriverUtils.clickOnElementWithWait(super.driver, arrowDeclaration);
     }
 
     public void removeDeclaration() {
-        logger.info("Removing the declaration created..");
+        log.info("Removing the declaration created..");
         WebDriverUtils.clickOnElementWithWait(super.driver, deleteDeclaration);
     }
 
@@ -181,7 +182,7 @@ public class BlockchainPage extends BasePage {
     }
 
     public void enterVariableName(String variableNameValue) {
-        logger.info("Entering variable name..");
+        log.info("Entering variable name..");
         WebDriverUtils.enterTextBox(super.driver, variableName, variableNameValue);
     }
 
@@ -206,12 +207,12 @@ public class BlockchainPage extends BasePage {
     }
 
     public void enterStartValueFor(String startValue) {
-        logger.info("Entering start value..");
+        log.info("Entering start value..");
         WebDriverUtils.enterTextBox(super.driver, startValueFor, startValue);
     }
 
     public void enterEndtValueFor(String endValue) {
-        logger.info("Entering end value..");
+        log.info("Entering end value..");
         WebDriverUtils.enterTextBox(super.driver, endValueFor, endValue);
     }
 

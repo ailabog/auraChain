@@ -1,8 +1,7 @@
-package ch.fabric.qa.dashboard;
-
+package ch.fabric.qa.applicationsettings;
 
 import ch.fabric.qa.BaseTest;
-import ch.fabric.qa.pages.DashboardPage;
+import ch.fabric.qa.pages.ApplicationSettingsPage;
 import ch.fabric.qa.pages.LandingPage;
 import ch.fabric.qa.pages.LoginPage;
 import ch.fabric.qa.utils.CredentialsUtils;
@@ -11,15 +10,19 @@ import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.io.FileNotFoundException;
+
 @Slf4j
-public class ApplicationOptionsTest extends BaseTest {
+public class EditRoleTest extends BaseTest{
 
 	private LoginPage loginPage;
-	private DashboardPage dashboardPage;
 	private LandingPage landingPage;
+	private ApplicationSettingsPage applicationSettingsPage;
+
+	public void envLogin(){
+	}
 
 	@BeforeTest
 	public void setuUp() {
@@ -27,19 +30,18 @@ public class ApplicationOptionsTest extends BaseTest {
 	}
 
 	@Test
-	public void C1114ApplicationOptions() {
-		log.info("Starting the application options test..");
+	public void C982EditRole() throws FileNotFoundException {
+		log.info("Starting the C982 Edit role test...");
 		loginPage = new LoginPage(new ChromeDriver());
 		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
-		dashboardPage = landingPage.returnDashboardPage();
-		dashboardPage.clickOnTaskButtonAnyApp();
+		landingPage.clickMenus();
+		applicationSettingsPage = landingPage.returnApplicationSettingsPage();
+		applicationSettingsPage.editUser();
 	}
 
 	@AfterTest
 	public void tearDown() {
 		loginPage.quit();
-		landingPage.quit();
-		dashboardPage.quit();
 	}
 }

@@ -3,6 +3,7 @@ package ch.fabric.qa.pages.sidebarpages;
 import ch.fabric.qa.interfaces.Sidebar;
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -14,10 +15,9 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class DataModelAndCatalogPage extends BasePage {
 
-    private static final Logger logger = LoggerFactory.getLogger(DataModelAndCatalogPage.class);
 
     private static By catalogsElement = By.xpath("//button[@class='q-btn inline relative-position q-btn-item non-selectable q-btn-rectangle q-focusable q-hoverable bg-white text-primary q-btn-no-uppercase']");
     private static By addNewButtonAllCatalogs = By.name("add_box");
@@ -40,59 +40,59 @@ public class DataModelAndCatalogPage extends BasePage {
     }
 
     public void catalogClick() {
-        logger.info("Adding new catalog{}" + catalogsElement);
+        log.info("Adding new catalog{}" + catalogsElement);
         WebDriverUtils.clickOnElementWithWait(super.driver, catalogsElement);
     }
 
     public void addNewCatalogFromAllCatalogs() {
-        logger.info("Adding new catalog{}" + addNewButtonAllCatalogs);
+        log.info("Adding new catalog{}" + addNewButtonAllCatalogs);
         WebDriverUtils.clickOnElementWithWait(super.driver, addNewButtonAllCatalogs);
     }
 
     public void importCatalog() {
-        logger.info("Import new catalog{}" + importCatalog);
+        log.info("Import new catalog{}" + importCatalog);
         WebDriverUtils.clickOnElementWithWait(super.driver, importCatalog);
     }
 
     public void exportCatalog() {
-        logger.info("Import new catalog{}" + exportCatalog);
+        log.info("Import new catalog{}" + exportCatalog);
         WebDriverUtils.clickOnElementWithWait(super.driver, exportCatalog);
     }
 
     public void addNewCatalog() {
-        logger.info("Adding new catalog..");
+        log.info("Adding new catalog..");
         WebDriverUtils.clickOnElementWithWait(super.driver, add_newButton);
     }
 
     public void selectTypeOfFile(String typeOfFile) {
-        logger.info("Selecting type of file..");
+        log.info("Selecting type of file..");
         WebDriverUtils.selectVisibleText(super.driver, typeOfFileSelect, typeOfFile);
     }
 
     public void importCloud() {
-        logger.info("Importing from cloud..");
+        log.info("Importing from cloud..");
         WebDriverUtils.clickOnElementWithWait(super.driver, cloudImport);
         WebDriverUtils.clickOnElementWithWait(super.driver, plusAddFile);
         //TO DO UPLOAD THE CATALOG
     }
 
     public void exportCloud() {
-        logger.info("Exporting the file...");
+        log.info("Exporting the file...");
         WebDriverUtils.clickOnElementWithWait(super.driver, exportCatalog);
     }
 
     public void searchCatalog(String searchCatalogValue) {
-        logger.info("Searching new catalog...");
+        log.info("Searching new catalog...");
         WebDriverUtils.enterTextBox(super.driver, searchCatalogTxtBox, searchCatalogValue);
     }
 
     public void addNewDataModel() {
-        logger.info("Adding new data model..");
+        log.info("Adding new data model..");
         WebDriverUtils.clickOnElementWithWait(super.driver, addNewDataModelButton);
     }
 
     public void classNameDataModel(String className) {
-        logger.info("Entering class name..");
+        log.info("Entering class name..");
         WebDriverUtils.enterTextBox(super.driver, classNameTxtbox, className);
     }
 }

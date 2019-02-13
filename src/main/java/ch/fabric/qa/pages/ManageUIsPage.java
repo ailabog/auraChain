@@ -1,6 +1,7 @@
 package ch.fabric.qa.pages;
 
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -12,11 +13,8 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class ManageUIsPage extends BasePage {
-
-    protected static final Logger logger = LoggerFactory.getLogger(DashboardPage.class);
-
 
     private By checkCheckBoxName = By.xpath("//i[text()='check_box_outline_blank']");
     private By removeManageUI = By.xpath("//i[text()='delete']");
@@ -39,62 +37,62 @@ public class ManageUIsPage extends BasePage {
     }
 
     public void navigateLeft() {
-        logger.info("Navigating to the left..");
+        log.info("Navigating to the left..");
         WebDriverUtils.clickOnElementWithWait(driver, navigateLeft);
     }
 
     public void setNavigateRightight() {
-        logger.info("Navigating to the right..");
+        log.info("Navigating to the right..");
         WebDriverUtils.clickOnElementWithWait(driver, navigateRight);
     }
 
     public void showRecordsPerPage(String result) {
-        logger.info("Showing records per page..");
+        log.info("Showing records per page..");
         WebDriverUtils.selectVisibleText(driver, recordsPerpage, result);
     }
 
     public void removeUI() {
-        logger.info("Removing UI..");
+        log.info("Removing UI..");
         WebDriverUtils.clickOnElementWithWait(driver, removeManageUI);
     }
 
     public void sortAscendingByName() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortDescendingName);
     }
 
     public void sortDescendingByName() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortAscendingName);
     }
 
     public void sortAscendingByDescription() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortDescendingDescription);
     }
 
     public void sortDescendingByDescription() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortAscendingDescription);
     }
 
     public void sortAscendingByOwner() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortDescendingOwner);
     }
 
     public void sortDescendingByOwner() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortAscendingOwner);
     }
 
     public void sortAscendingByUIs() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortDescendingOwner);
     }
 
     public void sortDescendingByUIs() {
-        logger.info("Sorting ascending by name..");
+        log.info("Sorting ascending by name..");
         WebDriverUtils.clickOnElementWithWait(driver, sortAscendingOwner);
     }
 }

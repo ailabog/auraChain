@@ -1,6 +1,7 @@
 package ch.fabric.qa.interfaces;
 
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -12,10 +13,9 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class Save {
 
-    private Logger logger = LoggerFactory.getLogger(Save.class);
 
     private By saveButton = By.xpath("//button//div[text()='Save']");
 
@@ -28,7 +28,7 @@ public class Save {
     }
 
     public Save save() {
-        logger.info("saving the info..");
+        log.info("saving the info..");
         WebDriverUtils.clickOnElementWithWait(driver, saveButton);
         return this;
     }

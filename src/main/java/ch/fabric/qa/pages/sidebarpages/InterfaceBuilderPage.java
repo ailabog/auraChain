@@ -3,6 +3,7 @@ package ch.fabric.qa.pages.sidebarpages;
 import ch.fabric.qa.interfaces.Sidebar;
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -14,9 +15,9 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class InterfaceBuilderPage extends BasePage {
 
-    private static Logger logger = LoggerFactory.getLogger(InterfaceBuilderPage.class);
 
     private static By pagesBtn = By.xpath("//button//div[text()='Pages']");
     private static By layoutBtn = By.xpath("//button//div[text()='Layout']");
@@ -41,52 +42,52 @@ public class InterfaceBuilderPage extends BasePage {
     public WebDriver getWebdriver(){ return super.driver;}
 
     public void clickOnCodeInput() {
-        logger.info("Clicking on the code field..");
+        log.info("Clicking on the code field..");
         WebDriverUtils.clickOnElementWithWait(driver, codeInput);
     }
 
     public void enterCodeText(String interfaceCodeValue) {
-        logger.info("Enter code text..");
+        log.info("Enter code text..");
         WebDriverUtils.enterTextBox(driver, codeInput, interfaceCodeValue);
     }
 
     public void clickOnNameInput() {
-        logger.info("Clicking on the name field..");
+        log.info("Clicking on the name field..");
         WebDriverUtils.clickOnElementWithWait(driver, nameInput);
     }
 
     public void enterNameText(String interfaceCodeValue) {
-        logger.info("Enter name text..");
+        log.info("Enter name text..");
         WebDriverUtils.enterTextBox(driver, nameInput, interfaceCodeValue);
     }
 
     public void clickOnPanelElement() {
-        logger.info("Clicking on panel to be added..");
+        log.info("Clicking on panel to be added..");
         WebDriverUtils.clickOnElementWithWait(driver, panelUIAdd);
     }
 
     public void clickLayoutStructureButton() {
-        logger.info("Clicking on the layout structure dropdown..");
+        log.info("Clicking on the layout structure dropdown..");
         WebDriverUtils.clickOnElementWithWait(driver, layoutStructureChevronDown);
     }
 
     public void clickBasicComponentsButton() {
-        logger.info("Clicking on the basic components dropdown..");
+        log.info("Clicking on the basic components dropdown..");
         WebDriverUtils.clickOnElement(driver, basicComponentsChevronDown);
     }
 
     public void clickPages() {
-        logger.info("Accessing Pages..");
+        log.info("Accessing Pages..");
         WebDriverUtils.clickOnElementWithWait(super.driver, pagesBtn);
     }
 
     public void clickLayout() {
-        logger.info("Accessing Layout..");
+        log.info("Accessing Layout..");
         WebDriverUtils.clickOnElementWithWait(super.driver, layoutBtn);
     }
 
     public void goToBasicComponents() {
-        logger.info("Going to Basic components section..");
+        log.info("Going to Basic components section..");
         WebDriverUtils.clickOnElementWithWait(super.driver, basicComponentsChevronDown);
         if (WebDriverUtils.findElement(super.driver, layoutStructureChevronDown) != null &&
                 WebDriverUtils.findElement(super.driver, standardElementsChevronDown) != null &&
@@ -101,12 +102,12 @@ public class InterfaceBuilderPage extends BasePage {
     }
 
     public void goToCustomComponents() {
-        logger.info("Going to Custom components section..");
+        log.info("Going to Custom components section..");
         WebDriverUtils.clickOnElementWithWait(super.driver, customComponentsChevronDown);
     }
 
     public void enterTextBoxValue(String value) {
-        logger.info("Entering value in textbox form element..");
+        log.info("Entering value in textbox form element..");
         WebDriverUtils.enterTextBox(super.driver, textBox, value);
 
     }

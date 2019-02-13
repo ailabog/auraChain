@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="checkRoleTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+<test name="checkRoleTest" >
+    <classes>
+        <class name="ch.fabric.qa.user.CheckRoleTest" />
+    </classes>
+</test>
+</suite>
