@@ -1,5 +1,6 @@
 package ch.fabric.qa.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 
@@ -9,7 +10,7 @@ import org.openqa.selenium.By;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class ComponentsFromMarketplacePage extends BasePage {
 
     private By updateBtn = By.xpath("//div[text()='UPDATE']");

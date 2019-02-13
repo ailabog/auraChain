@@ -3,6 +3,7 @@ package ch.fabric.qa.pages.sidebarpages;
 import ch.fabric.qa.interfaces.Sidebar;
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -18,10 +19,9 @@ import static ch.fabric.qa.utils.WebDriverUtils.WAIT_2000_MILLISECONDS;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class DiagramsPage extends BasePage {
 
-    private static Logger logger = LoggerFactory.getLogger(DiagramsPage.class);
 
     private static By savedButton = By.xpath("//div[text()='Saved']");
     //private By task = By.xpath("//div[@id='pluginSidebarContainer']/div/div[2]/div/div/canvas");
@@ -259,23 +259,23 @@ public class DiagramsPage extends BasePage {
     }
 
     public void clickContinueIfRejected2() {
-        logger.info("Click continue if rejected...");
+        log.info("Click continue if rejected...");
         WebDriverUtils.clickOnElementWithWait(super.driver, continueIfRejected2);
     }
 
     public void enterStatusCodeField() {
-    logger.info("Enter a value in the status code field...");
+    log.info("Enter a value in the status code field...");
     WebDriverUtils.enterTextBox(super.driver, statusCode, "StatusCode");
     }
 
     public void clickDeadlineField() {
-        logger.info("Click on the deadline field...");
+        log.info("Click on the deadline field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, deadlineField);
         WebDriverUtils.enterTextBox(super.driver, deadlineField, "10");
     }
 
     public void clickPriorityLevelDropDown(){
-        logger.info("Click on the priority level drop down...");
+        log.info("Click on the priority level drop down...");
         WebDriverUtils.explicitWait(super.driver, WAIT_2000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, priorityLevel);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
@@ -283,378 +283,378 @@ public class DiagramsPage extends BasePage {
     }
 
     public void clickNewCustomInstanceName() {
-        logger.info("Click on the custom instance name field...");
+        log.info("Click on the custom instance name field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, newCustomInstanceName);
-        logger.info("Adding new custom instance name text...");
+        log.info("Adding new custom instance name text...");
         WebDriverUtils.enterTextBox(super.driver, newCustomInstanceName, "NewCustomInstanceName");
     }
 
 
     public void savedMessageVisible(){
-        logger.info("Saved message is searched...");
+        log.info("Saved message is searched...");
         if (WebDriverUtils.checkIfElementExists(driver, savedButton, 10)){
-        logger.info(("Saved messagea appeared and the app was saved.."));
+        log.info(("Saved messagea appeared and the app was saved.."));
       } else{
-        logger.info("Saved messagea appeared and the app was not saved..");
+        log.info("Saved messagea appeared and the app was not saved..");
         }
     }
 //    public void clickNewInstanceName() {
-//        logger.info("Click on the instance name ");
+//        log.info("Click on the instance name ");
 //        WebDriverUtils.clickOnElementWithWait(super.driver, newInstanceName);
 //    }
 
     public void clickNewCustomTaskSubject() {
-        logger.info("Click on the custom task subject field...");
+        log.info("Click on the custom task subject field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, newCustomTaskSubject);
-        logger.info("Adding new custom task subject text...");
+        log.info("Adding new custom task subject text...");
         WebDriverUtils.enterTextBox(super.driver, newCustomTaskSubject, "NewCustomTaskSubject");
     }
 
     public void clickNewValuesTaskSubject(){
-        logger.info("Click on the task subject under new values tab...");
+        log.info("Click on the task subject under new values tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, newValuesTaskSubject);
     }
 
     public void clickTaskDetailsTab(){
-        logger.info("Click on the task details tab...");
+        log.info("Click on the task details tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, taskDetailsTab);
     }
 
     public void clickSaveButtonNotification2() {
-        logger.info("Click save on the rule editor - notifications tab...");
+        log.info("Click save on the rule editor - notifications tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, saveButtonNotifications2);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
     }
 
     public void clickNotificationsTab(){
-        logger.info("Click the outcomes - notifications tab...");
+        log.info("Click the outcomes - notifications tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, notificationsTab);
     }
 
     public void clickProlonger() {
-        logger.info("Click on the prolonger check...");
+        log.info("Click on the prolonger check...");
         WebDriverUtils.clickOnElementWithWait(super.driver, prolongerCheck);
     }
 
     public void clickEvaluateDropDownOption() {
-        logger.info("Click on the Evaluate option from the drop down list...");
+        log.info("Click on the Evaluate option from the drop down list...");
         WebDriverUtils.clickOnElementWithWait(super.driver, evaluateDropDownOption);
     }
 
     public void clickRightDropDown() {
-        logger.info("Click on the Right drop down...");
+        log.info("Click on the Right drop down...");
         WebDriverUtils.clickOnElementWithWait(super.driver, rightDropDown);
     }
 
     public void clickSaveNewTarget() {
-        logger.info("Click on save button - new target page...");
+        log.info("Click on save button - new target page...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, saveButtonNewTarget);
     }
 
     public void publish() {
-        logger.info("Click on save button - new target page...");
+        log.info("Click on save button - new target page...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, publishButton);
     }
 
     public void clickSaveNotifications() {
-        logger.info("Click on save button - notifications page...");
+        log.info("Click on save button - notifications page...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, saveButtonNotifications);
     }
 
     public void clickTasksDropDownOneValue() {
-        logger.info("Click on the tasks drop down and select value 1...");
+        log.info("Click on the tasks drop down and select value 1...");
         WebDriverUtils.clickOnElementWithWait(super.driver, tasksDropDownOneValue);
     }
 
     public void clickSaveLevelEditor() {
-        logger.info("Click on save button - level editor page...");
+        log.info("Click on save button - level editor page...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, saveButtonLevelEditor);
     }
 
     public void clickTasksDropDown() {
-        logger.info("Click on the tasks drop down...");
+        log.info("Click on the tasks drop down...");
         WebDriverUtils.clickOnElementWithWait(super.driver, tasksDropDown);
     }
 
     public void clickNewUserGroup() {
-        logger.info("Click to add new user group...");
+        log.info("Click to add new user group...");
         WebDriverUtils.clickOnElementWithWait(super.driver, newUserGroup);
     }
 
     public void clickSaveButtonRuleEditor() {
-        logger.info("Click to save the rule...");
+        log.info("Click to save the rule...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, saveButtonRuleEditor);
     }
 
     public void clickInsertSpecialIdentificatorFieldRight() {
-        logger.info("Click on the special identificator field...");
+        log.info("Click on the special identificator field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, insertSpecialIdentificatorFieldRight);
     }
 
     public void clickSelectEqualsFromDropDown() {
-        logger.info("Click on the Equals option...");
+        log.info("Click on the Equals option...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, selectEquals);
     }
 
     public void clickEquationDropDown() {
-        logger.info("Click on the equation drop down...");
+        log.info("Click on the equation drop down...");
         WebDriverUtils.clickOnElementWithWait(super.driver, equationDropDown);
     }
 
     public void clickProcessInstanceGenderValue() {
-        logger.info("Click on the Process Name String option...");
+        log.info("Click on the Process Name String option...");
         WebDriverUtils.clickOnElementWithWait(super.driver, processInstanceGender);
     }
 
     public void clickProcessInstanceDdl(){
-        logger.info("Click on the process name option from the list...");
+        log.info("Click on the process name option from the list...");
         WebDriverUtils.clickOnElementWithWait(super.driver, processInstanceList);
     }
 
     public void clickVariablesTab() {
-        logger.info("Click on the variables tab...");
+        log.info("Click on the variables tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, specialIdentificatorVaraiblesTab);
     }
 
     public void clickAddANewCondition() {
-        logger.info("Click on the add a new condition - rule editor...");
+        log.info("Click on the add a new condition - rule editor...");
         WebDriverUtils.clickOnElementWithWait(super.driver, addANewCondition);
     }
 
     public void clickInsertSpecialIdentificatorFieldLeft() {
-        logger.info("Click on the left special identificator field...");
+        log.info("Click on the left special identificator field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, insertSpecialIdentificatorFieldLeft);
     }
 
     public void clickRuleEditorDescription() {
-        logger.info("Click on the rule description field...");
+        log.info("Click on the rule description field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, ruleDescription);
-        logger.info("Clear the rule description field...");
+        log.info("Clear the rule description field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, ruleDescription);
-        logger.info("Enter new rule description...");
+        log.info("Enter new rule description...");
         WebDriverUtils.enterTextBox(super.driver, ruleDescription, "RuleDescription");
     }
 
     public void clickRuleEditorName() {
-        logger.info("Click on the rule editor name field...");
+        log.info("Click on the rule editor name field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, ruleName);
-        logger.info("Clear the rule editor name field...");
+        log.info("Clear the rule editor name field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, ruleName);
-        logger.info("Enter new rule name...");
+        log.info("Enter new rule name...");
         WebDriverUtils.enterTextBox(super.driver, ruleName, "RuleName");
     }
 
     public void clickAssignRuleMenu() {
-        logger.info("Click on the assign rule drop down...");
+        log.info("Click on the assign rule drop down...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, assignRuleMenu);
     }
 
 
     public void clickPropagatePreviousDecisionOption() {
-        logger.info("Click on the propagate previous decision drop down option...");
+        log.info("Click on the propagate previous decision drop down option...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, propagatePreviousDecision);
     }
 
 
     public void clickIfExpiresDropDown() {
-        logger.info("Click on the expiration drop down...");
+        log.info("Click on the expiration drop down...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, ifExpiresDropDwon);
     }
 
     public void clickContinueIfRejected() {
-        logger.info ("Click to continue if rejected...");
+        log.info ("Click to continue if rejected...");
         WebDriverUtils.clickOnElementWithWait(super.driver, continueIfRejected);
     }
 
     public void clickHoursOptionInDropDown() {
-        logger.info("Select the Hours option from the Hours drop down...");
+        log.info("Select the Hours option from the Hours drop down...");
         WebDriverUtils.clickOnElementWithWait(super.driver, hoursOptionInDropDown);
     }
 
     public void clickHoursDropDown() {
-        logger.info("Click on the hours drop down...");
+        log.info("Click on the hours drop down...");
         WebDriverUtils.clickOnElementWithWait(super.driver, hoursDropDown);
     }
 
     public void clickLevelApprovalTime() {
-        logger.info("Click on the approval time field...");
+        log.info("Click on the approval time field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, levelApprovalTime);
-        logger.info("Clear the approval time field...");
+        log.info("Clear the approval time field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, levelApprovalTime);
-        logger.info("Enter new approval time...");
+        log.info("Enter new approval time...");
         WebDriverUtils.enterTextBox(super.driver, levelApprovalTime, "40");
     }
 
     public void clickAddLevelButton() {
-        logger.info("Click to add a new approval matrix level...");
+        log.info("Click to add a new approval matrix level...");
         WebDriverUtils.clickOnElementWithWait(super.driver, addLevelButton);
     }
 
     public void clickLevelsTab(){
-        logger.info("Click on the levels tab...");
+        log.info("Click on the levels tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, levelsTab);
     }
 
     public void clickSave(){
-        logger.info("Click on the save button after entering the approval matrix email...");
+        log.info("Click on the save button after entering the approval matrix email...");
         WebDriverUtils.clickOnElementWithWait(super.driver, saveButton);
     }
 
     public void clickOnAddButtonPlus(){
-        logger.info("Click on the plus button to add the email...");
+        log.info("Click on the plus button to add the email...");
         WebDriverUtils.clickOnElementWithWait(super.driver, addPlusButton);
     }
 
     public void clickEmailBodyField() {
-        logger.info("Click on the email body field...");
+        log.info("Click on the email body field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, emailBodyField);
-        logger.info("Enter subject text...");
+        log.info("Enter subject text...");
         WebDriverUtils.enterTextBox(super.driver, emailBodyField, "Hello World!");
     }
 
     public void clickSubjectTextField() {
-        logger.info("Click on the subject field...");
+        log.info("Click on the subject field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, subjectTextField);
-        logger.info("Clear the subject field...");
+        log.info("Clear the subject field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, subjectTextField);
-        logger.info("Enter subject text...");
+        log.info("Enter subject text...");
         WebDriverUtils.enterTextBox(super.driver, subjectTextField, "TestSubject");
     }
 
     public void clickEmailField() {
-        logger.info("Click on the email field...");
+        log.info("Click on the email field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, emailField);
-        logger.info("Clear the email field...");
+        log.info("Clear the email field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, emailField);
-        logger.info("Enter email address...");
+        log.info("Enter email address...");
         WebDriverUtils.enterTextBox(super.driver, emailField, "lucian.puscasu@agys.ch");
     }
 
     public void clickTextTab() {
-        logger.info("Click on the Text tab...");
+        log.info("Click on the Text tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, textTab);
     }
 
     public void clickNotificationAddRecipients(){
-        logger.info("Click on the add recipients button...");
+        log.info("Click on the add recipients button...");
         WebDriverUtils.clickOnElementWithWait(super.driver, notificationAddRecipients);
     }
 
     public void clickConnectorPropertiesAddNotifications(){
-        logger.info("Click on the connector properties - add notifications...");
+        log.info("Click on the connector properties - add notifications...");
         WebDriverUtils.clickOnElementWithWait(super.driver, connectorPropertiesAddNotifications);
     }
 
     public void clickNotificationName() {
-        logger.info("Click on the notification name field...");
+        log.info("Click on the notification name field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, notificationName);
-        logger.info("Clear the notification name field...");
+        log.info("Clear the notification name field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, notificationName);
-        logger.info("Enter notification name text...");
+        log.info("Enter notification name text...");
         WebDriverUtils.enterTextBox(super.driver, notificationName, "NotificationName");
     }
 
 
     public void clickConnectorPropertiesStatusCode() {
-        logger.info("Click on the connector properties status code field...");
+        log.info("Click on the connector properties status code field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, connectorPropertiesStatusCode);
-        logger.info("Clear the connector properties status code field...");
+        log.info("Clear the connector properties status code field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, connectorPropertiesStatusCode);
-        logger.info("Enter connector properties status code text...");
+        log.info("Enter connector properties status code text...");
         WebDriverUtils.enterTextBox(super.driver, connectorPropertiesStatusCode, "ConnectorStatusCode");
     }
 
     public void clickConnectorPropertiesStatusName() {
-        logger.info("Click on the connector properties status name field...");
+        log.info("Click on the connector properties status name field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, connectorPropertiesStatusName);
-        logger.info("Clear the connector properties status name field...");
+        log.info("Clear the connector properties status name field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, connectorPropertiesStatusName);
-        logger.info("Enter connector properties status name text...");
+        log.info("Enter connector properties status name text...");
         WebDriverUtils.enterTextBox(super.driver, connectorPropertiesStatusName, "ConnectorStatusName");
     }
 
 
     public void clickConnectorPropertiesDescription() {
-        logger.info("Click on the connector properties field...");
+        log.info("Click on the connector properties field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, connectorPropertiesDescription);
-        logger.info("Clear the approval matrix code field...");
+        log.info("Clear the approval matrix code field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, connectorPropertiesDescription);
-        logger.info("Enter approval matrix code text...");
+        log.info("Enter approval matrix code text...");
         WebDriverUtils.enterTextBox(super.driver, connectorPropertiesDescription, "ConnectorDescription");
     }
 
     public void clickApprovalMatrixTargetLabel() {
-        logger.info("Click on the approval matrix target label field...");
+        log.info("Click on the approval matrix target label field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, connectorPropertiesLabel);
-        logger.info("Clear the approval matrix code field...");
+        log.info("Clear the approval matrix code field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, connectorPropertiesLabel);
-        logger.info("Enter approval matrix code text...");
+        log.info("Enter approval matrix code text...");
         WebDriverUtils.enterTextBox(super.driver, connectorPropertiesLabel, "ConnectorLabel");
     }
 
     public void clickApprovalMatrixDecisionsApprove() {
-        logger.info("Click on the approve option in the approval matrix decision drop-down list...");
+        log.info("Click on the approve option in the approval matrix decision drop-down list...");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixDecisionsApprove);
     }
 
     public void clickApprovalMatrixDecisionDropDown(){
-        logger.info("Click on the approval matrix decision drop down...");
+        log.info("Click on the approval matrix decision drop down...");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixDecisionsDropDwon);
     }
 
     public void clickApprovalMatrixDropDown() {
-        logger.info("Click on the approval matrix drop down in the list from the right...");
+        log.info("Click on the approval matrix drop down in the list from the right...");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixDropDown);
     }
 
     public void clickParallelGatewayOption() {
-        logger.info("Click on the parallel gateway drop-down option...");
+        log.info("Click on the parallel gateway drop-down option...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_5000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, parallelGatewayOption);
     }
 
     public void clickNewTargets() {
-        logger.info("Click on new target from targets tab...");
+        log.info("Click on new target from targets tab...");
         WebDriverUtils.clickOnElementWithWait(super.driver, newTarget);
     }
 
     public void clickTargetElementDropDown(){
-        logger.info("Click on target element dropdown...");
+        log.info("Click on target element dropdown...");
         WebDriverUtils.clickOnElementWithWait(super.driver, targetElementDropDown);
     }
 
     public void ApprovalMatrixDescriptionEdit() {
-        logger.info("Click on the approval matrix description field...");
+        log.info("Click on the approval matrix description field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixDescriptionField);
-        logger.info("Clear the approval matrix code field...");
+        log.info("Clear the approval matrix code field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clearElement(super.driver, approvalMatrixDescriptionField);
-        logger.info("Enter approval matrix code text...");
+        log.info("Enter approval matrix code text...");
         WebDriverUtils.enterTextBox(super.driver, approvalMatrixDescriptionField, "Description Sample");
     }
 
     public void ApprovalMatrixCodeEdit(){
-        logger.info("Click on the approval matrix code field...");
+        log.info("Click on the approval matrix code field...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixCode);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
@@ -663,7 +663,7 @@ public class DiagramsPage extends BasePage {
     }
 
     public void ApprovalMatrixLabelEdit() {
-        logger.info("Click on the approval matrix label...");
+        log.info("Click on the approval matrix label...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixLabel);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
@@ -674,183 +674,183 @@ public class DiagramsPage extends BasePage {
     public void ckeckSidebarElements() {
         if (WebDriverUtils.findElement(super.driver, diagram) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, diagram);
-            logger.info("Diagram element was found {}" + diagram);
+            log.info("Diagram element was found {}" + diagram);
         } else {
-            logger.info("Diagram element is not displayed" + diagram);
+            log.info("Diagram element is not displayed" + diagram);
         }
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         if (WebDriverUtils.findElement(super.driver, task) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, task);
-            logger.info("InterfaceBuilder element can be accessed" + task);
+            log.info("InterfaceBuilder element can be accessed" + task);
         } else {
-            logger.info("InterfaceBuilder element is not displayed" + task);
+            log.info("InterfaceBuilder element is not displayed" + task);
         }
         if (WebDriverUtils.findElement(super.driver, approvalMatrix) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrix);
-            logger.info("ApprovalMatrix element is displayed" + approvalMatrix);
+            log.info("ApprovalMatrix element is displayed" + approvalMatrix);
         } else {
-            logger.info("ApprovalMatrix elements is not displayed" + approvalMatrix);
+            log.info("ApprovalMatrix elements is not displayed" + approvalMatrix);
         }
         if (WebDriverUtils.findElement(super.driver, externalTask) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, externalTask);
-            logger.info("ExternalTask element is displayed");
+            log.info("ExternalTask element is displayed");
         } else {
-            logger.info("ExternalTask elementis not displayed");
+            log.info("ExternalTask elementis not displayed");
         }
         if (WebDriverUtils.findElement(super.driver, generateDocuments) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, generateDocuments);
-            logger.info("GenerateDocuments element is displayed" + generateDocuments);
+            log.info("GenerateDocuments element is displayed" + generateDocuments);
         } else {
-            logger.info("GenerateDocumentsPage element is not displayed" + generateDocuments);
+            log.info("GenerateDocumentsPage element is not displayed" + generateDocuments);
         }
         if (WebDriverUtils.findElement(super.driver, api) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, api);
-            logger.info("Apis element is displayed" + api);
+            log.info("Apis element is displayed" + api);
         } else {
-            logger.info("Apis element is not displayed" + api);
+            log.info("Apis element is not displayed" + api);
         }
         if (WebDriverUtils.findElement(super.driver, generalStart) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, generalStart);
-            logger.info("General Task element is displayed" + generalStart);
+            log.info("General Task element is displayed" + generalStart);
         } else {
-            logger.info("General Task element is not displayed" + generalStart);
+            log.info("General Task element is not displayed" + generalStart);
         }
         if (WebDriverUtils.findElement(super.driver, startFromExternalSource) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, startFromExternalSource);
-            logger.info("Start From External source element is displayed" + startFromExternalSource);
+            log.info("Start From External source element is displayed" + startFromExternalSource);
         } else {
-            logger.info("Start From External element is not displayed" + startFromExternalSource);
+            log.info("Start From External element is not displayed" + startFromExternalSource);
         }
 
         if (WebDriverUtils.findElement(super.driver, exclusiveGateway) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, exclusiveGateway);
-            logger.info("Exclusive Gateway element is displayed" + exclusiveGateway);
+            log.info("Exclusive Gateway element is displayed" + exclusiveGateway);
         } else {
-            logger.info("Exclusive Gateway element is displayed" + exclusiveGateway);
+            log.info("Exclusive Gateway element is displayed" + exclusiveGateway);
         }
         if (WebDriverUtils.findElement(super.driver, parallelGateway) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, parallelGateway);
-            logger.info("Parallel Gateway element is displayed" + parallelGateway);
+            log.info("Parallel Gateway element is displayed" + parallelGateway);
         } else {
-            logger.info("Parallel Gateway element is displayed" + parallelGateway);
+            log.info("Parallel Gateway element is displayed" + parallelGateway);
         }
         if (WebDriverUtils.findElement(super.driver, joinGateway) != null) {
             WebDriverUtils.clickOnElementWithWait(super.driver, joinGateway);
-            logger.info("Join Gateway element is displayed" + joinGateway);
+            log.info("Join Gateway element is displayed" + joinGateway);
         } else {
-            logger.info("Join Gateway element is not displayed" + joinGateway);
+            log.info("Join Gateway element is not displayed" + joinGateway);
         }
     }
 
 
     public void firstHumanTaskLabelCodeDescription(String valueTask, String valueCode, String descriptionValue) {
-        logger.info("Go to new target..");
+        log.info("Go to new target..");
         WebDriverUtils.clickOnElementWithWait(driver, clickOnNewTarget);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
-        logger.info("Clicking on your task label...");
+        log.info("Clicking on your task label...");
         WebDriverUtils.clickOnElementWithWait(driver, clickOnTaskName);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
-        logger.info("Entering label for task..");
+        log.info("Entering label for task..");
         WebDriverUtils.enterTextBox(super.driver, labelTxtBox, valueTask);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Entering code for task..");
+        log.info("Entering code for task..");
         WebDriverUtils.enterTextBox(super.driver, codeTxtBox, valueCode);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Clicking on task desc..");
+        log.info("Clicking on task desc..");
         WebDriverUtils.clickOnElementWithWait(super.driver,descriptionTask );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Entering text for task description..");
+        log.info("Entering text for task description..");
         WebDriverUtils.enterTextBox(super.driver, descriptionTaskTxt, descriptionValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
     }
 
     public void firstHumanTaskCustomTaskSubject(String customTaskSubject, String DataModelvarValue) {
-        logger.info("Going to task subject..");
+        log.info("Going to task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, taskSubject);
         WebDriverUtils.enterTextBox(super.driver, customSubjectTextArea, customTaskSubject);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Accessing variables in task subject..");
+        log.info("Accessing variables in task subject..");
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, varLabelTaskSubject);
-        logger.info("Checking a variable in table..");
+        log.info("Checking a variable in table..");
         WebDriverUtils.enterTextBox(super.driver, tableVariables,DataModelvarValue );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the Data Model class");
+        log.info("Choosing the Data Model class");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelVarTaskSubject );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the Data Model attribute");
+        log.info("Choosing the Data Model attribute");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelAttributeTskSubject);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
 //        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-//        logger.info("Click on a variable...");
+//        log.info("Click on a variable...");
 //        WebDriverUtils.clickOnElementWithWait(super.driver, primaclasPrimuatributString);
-        logger.info("Switching to Variables tab");
+        log.info("Switching to Variables tab");
         WebDriverUtils.clickOnElementWithWait(super.driver, variablesTab);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing InstanceID Task Subject Variable..");
+        log.info("Choosing InstanceID Task Subject Variable..");
         WebDriverUtils.clickOnElementWithWait(super.driver, InstanceIDTaskSubjectVariable );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, InstanceIDTaskSubjectVariable2);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Saving the task subject..");
+        log.info("Saving the task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, TaskSubjectSaveButton);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
     }
 
     public void firstHumanTaskCustomInstanceName(String valueCustomInstance, String DataModelvarValue)  {
-        logger.info("Going to custom instance..");
+        log.info("Going to custom instance..");
         WebDriverUtils.clickOnElementWithWait(super.driver, instanceName);
-        logger.info("Inserting Custom Instance Name..");
+        log.info("Inserting Custom Instance Name..");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.enterTextBox(super.driver, customInstanceName,valueCustomInstance );
-        logger.info("Accessing variables in instance name..");
+        log.info("Accessing variables in instance name..");
         WebDriverUtils.clickOnElementWithWait(super.driver, varLabelInstanceName);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Checking a variable in table..");
+        log.info("Checking a variable in table..");
         WebDriverUtils.enterTextBox(super.driver, tableVariables,DataModelvarValue );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the Data Model class");
+        log.info("Choosing the Data Model class");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelVarTaskSubject );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the Data Model attribute");
+        log.info("Choosing the Data Model attribute");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelAttributeTskSubject);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Switching to Variables tab");
+        log.info("Switching to Variables tab");
         WebDriverUtils.clickOnElementWithWait(super.driver, variablesTab);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing InstanceID Task Subject Variable..");
+        log.info("Choosing InstanceID Task Subject Variable..");
         WebDriverUtils.clickOnElementWithWait(super.driver, InstanceIDTaskSubjectVariable );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, InstanceIDTaskSubjectVariable2);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Saving the task subject..");
+        log.info("Saving the task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, TaskSubjectSaveButton);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
     }
 
     public void firstHumanTaskSetDeadline(String deadlineValue )  {
-//        logger.info("Clicking on deadline..");
+//        log.info("Clicking on deadline..");
 //        WebDriverUtils.clickOnElementWithWait(super.driver,clickDeadline);
 //        WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Entering deadline..");
+        log.info("Entering deadline..");
         WebDriverUtils.enterTextBox(super.driver, deadlineTask, deadlineValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Clicking on time unit");
+        log.info("Clicking on time unit");
         WebDriverUtils.clickOnElementWithWait(super.driver, deadlineTimeUnit);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting time for my deadline task..");
+        log.info("Selecting time for my deadline task..");
         WebDriverUtils.clickOnElementWithWait(super.driver, hoursTask);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
     }
 
     public void firstHumanTaskselectPriority() {
-        logger.info("Selecting priority for task..");
+        log.info("Selecting priority for task..");
         WebDriverUtils.clickOnElementWithWait(super.driver, priorityArrow);
         WebDriverUtils.clickOnElementWithWait(super.driver, priorityLevels);
     }
 
     public void firstHumanTaskAccessTargetsTab() {
-        logger.info("Go to Targets Tab..");
+        log.info("Go to Targets Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, targetsTab);
     }
 
@@ -858,287 +858,287 @@ public class DiagramsPage extends BasePage {
 
 
     public void firstHumanTaskExpirationBehavior(String timeFrameValue)  {
-        logger.info("Going to expiration behaviour");
+        log.info("Going to expiration behaviour");
         WebDriverUtils.clickOnElementWithWait(super.driver, expirationBehaviour);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Inserting time frame value..");
+        log.info("Inserting time frame value..");
         WebDriverUtils.enterTextBox(super.driver,timeFrameTask, timeFrameValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing time frame unit..");
+        log.info("Choosing time frame unit..");
         WebDriverUtils.clickOnElementWithWait(super.driver, timeFrameOptions);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, timeFrameUnit);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting target for process behaviour..");
+        log.info("Selecting target for process behaviour..");
         WebDriverUtils.clickOnElementWithWait(super.driver, processBehaviourddl);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, processBehaviourTarget);
-        logger.info("Saving the expiration behavior..");
+        log.info("Saving the expiration behavior..");
         WebDriverUtils.clickOnElementWithWait(super.driver, savebuttonExpiration);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
     }
 
     public void firstHumanTaskSetEscalation(String escalationTaskNameValue, String DataModelvarValue)  {
-        logger.info("Set escalation..");
+        log.info("Set escalation..");
         WebDriverUtils.clickOnElementWithWait(super.driver, setEscalation);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Checking the checkbox for escalation..");
+        log.info("Checking the checkbox for escalation..");
         WebDriverUtils.clickOnElementWithWait(super.driver, escalationRadio);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Selecting Escalate UI Fragment..");
+        log.info("Selecting Escalate UI Fragment..");
         WebDriverUtils.clickOnElementWithWait(super.driver, clickOnEscalateUIFragmentddl);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Inserting escalation task name..");
+        log.info("Inserting escalation task name..");
         WebDriverUtils.enterTextBox(super.driver, enterEscalationTaskName, escalationTaskNameValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Accessing Escalation variables Task Name..");
+        log.info("Accessing Escalation variables Task Name..");
         WebDriverUtils.clickOnElementWithWait(super.driver, varLabelEscalationTaskName );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Checking a variable in table..");
+        log.info("Checking a variable in table..");
         WebDriverUtils.enterTextBox(super.driver, tableVariables,DataModelvarValue );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the Data Model class");
+        log.info("Choosing the Data Model class");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelVarTaskSubject );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the Data Model attribute");
+        log.info("Choosing the Data Model attribute");
         WebDriverUtils.clickOnElementWithWait(super.driver, DataModelAttributeTskSubject);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Switching to Variables tab");
+        log.info("Switching to Variables tab");
         WebDriverUtils.clickOnElementWithWait(super.driver, variablesTab);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing InstanceID Task Subject Variable..");
+        log.info("Choosing InstanceID Task Subject Variable..");
         WebDriverUtils.clickOnElementWithWait(super.driver, InstanceIDTaskSubjectVariable );
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, InstanceIDTaskSubjectVariable2);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Saving the task subject..");
+        log.info("Saving the task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, TaskSubjectSaveButton);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
 
     }
     public void firstHumanTaskTargetElementProperties(String connectorLabelValue, String connectorDescriptionValue, String connectorStatusNameValue, String connectorStatusCodeValue)  {
-        logger.info("Accessing the target element properties..");
+        log.info("Accessing the target element properties..");
         WebDriverUtils.clickOnElementWithWait(super.driver, targetElement);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Choosing the target element..");
+        log.info("Choosing the target element..");
         WebDriverUtils.clickOnElementWithWait(super.driver,targetElementDdl);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, targetElementValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Setting the connector label..");
+        log.info("Setting the connector label..");
         WebDriverUtils.enterTextBox(super.driver, connectorLabel, connectorLabelValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Inserting the new target description..");
+        log.info("Inserting the new target description..");
         WebDriverUtils.enterTextBox(super.driver, connectorDescription, connectorDescriptionValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Inserting connector status name");
+        log.info("Inserting connector status name");
         WebDriverUtils.enterTextBox(super.driver,connectorStatusName, connectorStatusNameValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-        logger.info("Inserting connector status code");
+        log.info("Inserting connector status code");
         WebDriverUtils.enterTextBox(super.driver, connectorStatusCode, connectorStatusCodeValue);
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
     }
 
     public void enterStatusNameField() {
-        logger.info("Enter a value in the status name field...");
+        log.info("Enter a value in the status name field...");
         WebDriverUtils.enterTextBox(super.driver, statusNameField, STATUS_NAME_FIELD);
     }
 
     public void clickStatusNameField() {
-        logger.info("Click on the status name field from the right...");
+        log.info("Click on the status name field from the right...");
         WebDriverUtils.clickOnElementWithWait(super.driver, statusNameField);
     }
 
     public void clickGeneralStartDropDown() {
-        logger.info("Click on general start drop down - from the right...");
+        log.info("Click on general start drop down - from the right...");
         WebDriverUtils.clickOnElementWithWait(super.driver, generalStartDropDown);
     }
 
     public void enterTxtLabelTask(String valueTask) {
-        logger.info("Entering label for task..");
+        log.info("Entering label for task..");
         WebDriverUtils.enterTextBox(super.driver, labelTxtBox, valueTask);
     }
 
     public void enterTxtCodeTask(String valueCode) {
-        logger.info("Entering code for task..");
+        log.info("Entering code for task..");
         WebDriverUtils.enterTextBox(super.driver, codeTxtBox, valueCode);
     }
 
     public void clickTaskSubject(String customTaskSubject) {
-        logger.info("Going to task subject..");
+        log.info("Going to task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, taskSubject);
         WebDriverUtils.enterTextBox(super.driver, customSubjectTextArea, customTaskSubject);
     }
 
     public void clickVar() {
-        logger.info("Accessing variables in task subject..");
+        log.info("Accessing variables in task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, varLabel);
     }
 
     public void searchVariable(String varValue) {
-        logger.info("Checking a variable in table..");
+        log.info("Checking a variable in table..");
         WebDriverUtils.table(driver, varValue, tableVariables);
     }
 
     public void clickCancel() {
-        logger.info("Cancelling task subject..");
+        log.info("Cancelling task subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, cancelBtn);
     }
 
     public void backAction() {
-        logger.info("Going back..");
+        log.info("Going back..");
         WebDriverUtils.clickOnElementWithWait(super.driver, backArrow);
     }
 
     public void clickCustomeInstance() {
-        logger.info("Going to custom instance..");
+        log.info("Going to custom instance..");
         WebDriverUtils.clickOnElementWithWait(super.driver, customInstanceName);
     }
 
     public void enterTxtCustomInstanceName(String valueCustomInstance) {
-        logger.info("Entering text for custom instance name..");
+        log.info("Entering text for custom instance name..");
         WebDriverUtils.enterTextBox(super.driver, customSubjectTextArea, valueCustomInstance);
     }
 
     public void enterDescriptionTak(String descriptionValue) {
-        logger.info("Entering text for task description..");
+        log.info("Entering text for task description..");
         WebDriverUtils.enterTextBox(super.driver, descriptionTask, descriptionValue);
     }
 
     public void enterDeadline(String deadlineValue) {
-        logger.info("Entering deadline..");
+        log.info("Entering deadline..");
         WebDriverUtils.enterTextBox(super.driver, deadlineTask, deadlineValue);
     }
 
     public void selectTime() {
-        logger.info("Selecting time for my deadline task..");
+        log.info("Selecting time for my deadline task..");
         WebDriverUtils.clickOnElementWithWait(super.driver, hoursTask);
     }
 
     public void clickExpirationBehaviour() {
-        logger.info("Go to expiration behaviour");
+        log.info("Go to expiration behaviour");
         WebDriverUtils.clickOnElementWithWait(super.driver, expirationBehaviour);
     }
 
     public void enterTimeFrame(String timeframeValue) {
-        logger.info("Entering timeframe for expiration behaviour..");
+        log.info("Entering timeframe for expiration behaviour..");
         WebDriverUtils.enterTextBox(super.driver, timeFrameTask, timeframeValue);
     }
 
     public void selectTimeFrame() {
-        logger.info("Choosing time frame value..");
+        log.info("Choosing time frame value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, timeFrameOptions);
     }
 
     public void selectTarget() {
-        logger.info("Selecting target for process behaviour..");
+        log.info("Selecting target for process behaviour..");
         WebDriverUtils.clickOnElementWithWait(super.driver, processBehaviour);
     }
 
     public void selectPriority(String optionPriority) {
-        logger.info("Selecting priority for task..");
+        log.info("Selecting priority for task..");
         WebDriverUtils.selectVisibleText(super.driver, priorityArrow, optionPriority);
     }
 
 
     public void clickAssignInterface() {
-        logger.info("Go to Assign interface..");
+        log.info("Go to Assign interface..");
         WebDriverUtils.clickOnElementWithWait(super.driver, assignInterface);
     }
 
     public void clickCreateIntreface() {
-        logger.info("Create new intreface..");
+        log.info("Create new intreface..");
         WebDriverUtils.clickOnElementWithWait(super.driver, createNewInterface);
     }
 
     public void clickSetEscalation() {
-        logger.info("Set escalation..");
+        log.info("Set escalation..");
         WebDriverUtils.clickOnElementWithWait(super.driver, setEscalation);
     }
 
     public void checkEscalation() {
-        logger.info("Checking the checkbox for escalation..");
+        log.info("Checking the checkbox for escalation..");
         WebDriverUtils.clickOnElementWithWait(super.driver, escalationRadio);
     }
 
     public void clickDetailsTab() {
-        logger.info("Go to Details Tab..");
+        log.info("Go to Details Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, detailsTab);
     }
 
     public void clickTargetsTab() {
-        logger.info("Go to Details Tab..");
+        log.info("Go to Details Tab..");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, targetsTab);
     }
 
     public void clickUsersTab() {
-        logger.info("Go to Details Tab..");
+        log.info("Go to Details Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, usersTab);
     }
 
     public void clickRulesTab() {
-        logger.info("Go to Details Tab..");
+        log.info("Go to Details Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, rulesTab);
     }
 
     public void clickNewTarget() {
-        logger.info("Go to new target..");
+        log.info("Go to new target..");
         WebDriverUtils.clickOnElementWithWait(super.driver, newTarget);
     }
 
     public void enterTxtLabelMatrix(String labelMatrix) {
-        logger.info("Entering label for Matrix..");
+        log.info("Entering label for Matrix..");
         WebDriverUtils.enterTextBox(super.driver, approvalMatrixLabel, labelMatrix);
     }
 
     public void enterTextCodeMatrix(String codeMatrix) {
-        logger.info("Entering code for Matrix..");
+        log.info("Entering code for Matrix..");
         WebDriverUtils.enterTextBox(super.driver, approvalMatrixCode, codeMatrix);
     }
 
     public void enterTextDescription(String descriptionValue) {
-        logger.info("Entreing description for Matrix..");
+        log.info("Entreing description for Matrix..");
         WebDriverUtils.enterTextBox(super.driver, approvalMatrixCode, descriptionValue);
     }
 
     public void dragAndDropElement(By elementCanvas) {
-        logger.info("Now I am dropping element {}" + elementCanvas);
+        log.info("Now I am dropping element {}" + elementCanvas);
         WebDriverUtils.dragAndDrop(super.driver, elementCanvas, canvas);
     }
 
     public void goToLevelTabMatrix() {
-        logger.info("Go to Levels Tab..");
+        log.info("Go to Levels Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixLevelsTab);
     }
 
     public void addLdevelMatrix() {
-        logger.info("Go to Levels Tab..");
+        log.info("Go to Levels Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixLevelsTab);
     }
 
     public void checkContinueIfReject() {
-        logger.info("Check the checkbox continue if reject..");
+        log.info("Check the checkbox continue if reject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixContinueCheck);
     }
 
     public void addRuleFromMatrix() {
-        logger.info("Adding rule to my matrix..");
+        log.info("Adding rule to my matrix..");
         WebDriverUtils.clickOnElementWithWait(super.driver, approvalMatrixAddRule);
     }
 
     public void enterNameRules(String nameRule) {
-        logger.info("Creating rule for my matrix..");
+        log.info("Creating rule for my matrix..");
         WebDriverUtils.enterTextBox(super.driver, approvalMatrixNameRule, nameRule);
     }
 
     public void enterDescriptionRules(String descriptionRule) {
-        logger.info("Creating rule for my matrix..");
+        log.info("Creating rule for my matrix..");
         WebDriverUtils.enterTextBox(super.driver, approvalMatrixDescriptionRule, descriptionRule);
     }
 
     public void clickStatement() {
-        logger.info("Add statement..");
+        log.info("Add statement..");
         WebDriverUtils.clickOnElementWithWait(super.driver, statement);
     }
 
@@ -1151,53 +1151,53 @@ public class DiagramsPage extends BasePage {
     }
 
     public void selectMod1() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueMod1);
     }
 
     public void selectVar1() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueVar1);
     }
 
     public void selectLoc1() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueLoc1);
     }
 
     public void selectTXT1() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueTXT1);
     }
 
     public void selectMod2() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueMod2);
     }
 
     public void selectVar2() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueVar2);
     }
 
     public void selectLoc2() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueLoc2);
     }
 
     public void selectTXT2() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueTXT2);
     }
 
     public void selectLog2() {
-        logger.info("Selecting mod value..");
+        log.info("Selecting mod value..");
         WebDriverUtils.clickOnElementWithWait(super.driver, valueLog2);
     }
 
 
     public void removeStatement() {
-        logger.info("Removing statement..");
+        log.info("Removing statement..");
         WebDriverUtils.clickOnElementWithWait(super.driver, removeStatement);
     }
 
@@ -1206,67 +1206,67 @@ public class DiagramsPage extends BasePage {
     }
 
     public void checkDynamicExternalTask() {
-        logger.info("Checking the checkBox for Dynamic external tasks..");
+        log.info("Checking the checkBox for Dynamic external tasks..");
         WebDriverUtils.clickOnElementWithWait(super.driver, checkDynamicExternalTasks);
     }
 
     public void clickSmsSubjectExternalTask() {
-        logger.info("Go to Sms subject..");
+        log.info("Go to Sms subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, arrowSmsSubject);
     }
 
     public void clickTaskSubjectExternalTask() {
-        logger.info("Go to Sms subject..");
+        log.info("Go to Sms subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, arrowTaskSubject);
     }
 
     public void clickExpirationBehaviourExternalTask() {
-        logger.info("Go to Sms subject..");
+        log.info("Go to Sms subject..");
         WebDriverUtils.clickOnElementWithWait(super.driver, arrowExpirationBehaviour);
     }
 
     public void enterTxtBoxCustomSmsSubject(String smsSubject) {
-        logger.info("Entering custom sms subject..");
+        log.info("Entering custom sms subject..");
         WebDriverUtils.enterTextBox(super.driver, customSmSSubject, smsSubject);
     }
 
     public void enterSubjectEmail(String subjectEmail) {
-        logger.info("Entering email subject..");
+        log.info("Entering email subject..");
         WebDriverUtils.enterTextBox(super.driver, SubjectTxtBox, subjectEmail);
     }
 
     public void enterAttachmentsTxtBox(String attachment) {
-        logger.info("Entering attachment..");
+        log.info("Entering attachment..");
         WebDriverUtils.enterTextBox(super.driver, attachmentsTxtBox, attachment);
     }
 
     public void enterBodyTxtBox(String bodyTxt) {
-        logger.info("Entering attachment..");
+        log.info("Entering attachment..");
         WebDriverUtils.enterTextBox(super.driver, bodyTxtBox, bodyTxt);
     }
 
     public void addDocuments() {
-        logger.info("Adding documents..");
+        log.info("Adding documents..");
         WebDriverUtils.clickOnElementWithWait(super.driver, addDocuments);
     }
 
     public void goToDocumentTemplate() {
-        logger.info("Selecting a document template..");
+        log.info("Selecting a document template..");
         WebDriverUtils.clickOnElementWithWait(super.driver, documentTemplateArrow);
     }
 
     public void enterlabelApi(String labelApi) {
-        logger.info("Entering label..");
+        log.info("Entering label..");
         WebDriverUtils.enterTextBox(super.driver, apiLabel, labelApi);
     }
 
     public void enterCodeApi(String codeApiValue) {
-        logger.info("Entering code..");
+        log.info("Entering code..");
         WebDriverUtils.enterTextBox(super.driver, codeApi, codeApiValue);
     }
 
     public void enterDescriptionApi(String descriptionApiValue) {
-        logger.info("Entering Api description..");
+        log.info("Entering Api description..");
         WebDriverUtils.enterTextBox(super.driver, descriptionApi, descriptionApiValue);
     }
 

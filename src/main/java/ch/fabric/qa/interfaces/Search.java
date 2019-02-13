@@ -2,6 +2,7 @@ package ch.fabric.qa.interfaces;
 
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -13,10 +14,9 @@ import org.slf4j.LoggerFactory;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class Search extends BasePage {
 
-    private static Logger logger = LoggerFactory.getLogger(Search.class);
 
     private static By nameTxtBox = By.xpath("//*[contains(text()='Name']");
     private static WebDriver driver;
@@ -27,7 +27,7 @@ public class Search extends BasePage {
     }
 
     private static void search(String result) {
-        logger.info("Searching for {}" + result);
+        log.info("Searching for {}" + result);
         WebDriverUtils.enterTextBox(driver, nameTxtBox, result);
     }
 

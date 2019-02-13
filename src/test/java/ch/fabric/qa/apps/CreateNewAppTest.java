@@ -5,13 +5,13 @@ import ch.fabric.qa.pages.sidebarpages.DiagramsPage;
 import ch.fabric.qa.BaseTest;
 import ch.fabric.qa.utils.CredentialsUtils;
 import ch.fabric.qa.utils.GenerateRandomData;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ch.fabric.qa.interfaces.Save;
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.LoginPage;
 import ch.fabric.qa.pages.LandingPage;
 import ch.fabric.qa.pages.AppsPage;
@@ -24,10 +24,10 @@ import io.github.bonigarcia.wdm.ChromeDriverManager;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class CreateNewAppTest extends BaseTest {
 
 	private LoginPage loginPage;
-	private Environments environment;
 	private LandingPage landingPage;
 	private AppsPage appsPage;
 	private BasePage basePage;
@@ -38,20 +38,16 @@ public class CreateNewAppTest extends BaseTest {
 
 
 
-	@Parameters({ "environment"})
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
-		this.environment = environment == null? Environments.TEST : Environments.valueOf(environment);
 	}
 
 	@Test
 	public void testApps(){
-		logger.info("Starting creating new appliocation test..");
+		log.info("Starting creating new appliocation test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		appsPage = landingPage.returnAppsPage();
@@ -63,7 +59,7 @@ public class CreateNewAppTest extends BaseTest {
 		appsPage.uploadFileToApp("src\\test\\resources\\images\\cat.jpg");
 		Save.setDriver(loginPage.getDriver()).save();
 		diagramsPage = appsPage.goToDiagramsPageFromAppsPage();
-		logger.info("Finishing creating new application test..");
+		log.info("Finishing creating new application test..");
    }
 
 	@AfterTest

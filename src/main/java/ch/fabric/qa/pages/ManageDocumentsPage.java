@@ -1,5 +1,6 @@
 package ch.fabric.qa.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,10 +12,9 @@ import org.openqa.selenium.By;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class ManageDocumentsPage extends BasePage {
 
-    protected static final Logger logger = LoggerFactory.getLogger(ManageDocumentsPage.class);
 
     private By checkCheckBoxNme = By.xpath("//i[text()='check_box_outline_blank']");
     private By removeDocument = By.xpath("//i[text()='delete']");

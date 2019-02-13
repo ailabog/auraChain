@@ -1,5 +1,6 @@
 package ch.fabric.qa.interfaces;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,9 +22,9 @@ import ch.fabric.qa.utils.WebDriverUtils;
  */
 
 
+@Slf4j
 public class Sidebar {
 
-    private static Logger logger = LoggerFactory.getLogger(Sidebar.class);
 
     private static By diagram = By.xpath("//a//i[@class='q-icon mdi mdi-drawing']");
     private static By interfaceBuilder = By.xpath("//a//i[@class='q-icon mdi mdi-group']");
@@ -61,41 +62,41 @@ public class Sidebar {
     public static void ckeckSidebarElements() {
         if (WebDriverUtils.findElement(driver, diagram) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, diagram);
-            logger.info("Diagram element was found {}" + diagram);
+            log.info("Diagram element was found {}" + diagram);
         } else {
-            logger.info("Diagram element is not displayed"  + diagram);
+            log.info("Diagram element is not displayed"  + diagram);
         }
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         if (WebDriverUtils.findElement(driver, interfaceBuilder) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, interfaceBuilder);
-            logger.info("InterfaceBuilder element can be accessed" + interfaceBuilder);
+            log.info("InterfaceBuilder element can be accessed" + interfaceBuilder);
         } else {
-            logger.info("InterfaceBuilder element is not displayed" + interfaceBuilder);
+            log.info("InterfaceBuilder element is not displayed" + interfaceBuilder);
         }
         if (WebDriverUtils.findElement(driver, apis) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, apis);
-            logger.info("Api element can be accessed" +  apis);
+            log.info("Api element can be accessed" +  apis);
         } else {
-            logger.info("Apis element is not displayed" +  apis);
+            log.info("Apis element is not displayed" +  apis);
         }
         if (WebDriverUtils.findElement(driver, dataModelAndCatalogs) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, dataModelAndCatalogs);
-            logger.info("Data Model And Catalogs element can be accessed" + dataModelAndCatalogs);
+            log.info("Data Model And Catalogs element can be accessed" + dataModelAndCatalogs);
         } else {
-            logger.info("Data Model And Catalog element is not displayed"+ dataModelAndCatalogs);
+            log.info("Data Model And Catalog element is not displayed"+ dataModelAndCatalogs);
         }
         if (WebDriverUtils.findElement(driver, reports) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, reports);
-            logger.info("Reports element can be accessed" + reports);
+            log.info("Reports element can be accessed" + reports);
         } else {
-            logger.info("Reports element cant be accessed" + reports);
+            log.info("Reports element cant be accessed" + reports);
         }
 
         if (WebDriverUtils.findElement(driver, blockchain) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, blockchain);
-            logger.info("Blockchain element can be accessed" + blockchain);
+            log.info("Blockchain element can be accessed" + blockchain);
         } else {
-            logger.info("Blockchain element cant be accessed" + blockchain);
+            log.info("Blockchain element cant be accessed" + blockchain);
         }
     }
 

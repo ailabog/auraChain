@@ -1,5 +1,6 @@
 package ch.fabric.qa;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
@@ -11,9 +12,8 @@ import org.testng.annotations.AfterMethod;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class BaseTest {
-
-	protected static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 
 	private String loggingMessage;
 	private Object[] loggingArgs;
@@ -21,21 +21,21 @@ public class BaseTest {
 	protected void startLogging(String message, Object... args) {
 		this.loggingMessage = message;
 		this.loggingArgs = args;
-		logger.info("********************************************************************************************");
-		logger.info(this.getClass().getSimpleName() + " " + message + " STARTED", args);
-		logger.info("                                                              ");
+		log.info("********************************************************************************************");
+		log.info(this.getClass().getSimpleName() + " " + message + " STARTED", args);
+		log.info("                                                              ");
 	}
 
 	private void endLoggingPass(String message, Object... args) {
-		logger.info(this.getClass().getSimpleName() + " " + message + " PASSED", args);
-		logger.info("********************************************************************************************");
-		logger.info(" ");
+		log.info(this.getClass().getSimpleName() + " " + message + " PASSED", args);
+		log.info("********************************************************************************************");
+		log.info(" ");
 	}
 
 	private void endLoggingFail(String message, Object... args) {
-		logger.info(this.getClass().getSimpleName() + " " + message + " FAILED", args);
-		logger.info("********************************************************************************************");
-		logger.info(" ");
+		log.info(this.getClass().getSimpleName() + " " + message + " FAILED", args);
+		log.info("********************************************************************************************");
+		log.info(" ");
 	}
 
 	@AfterMethod
@@ -46,7 +46,7 @@ public class BaseTest {
 
 		if (testResult.getStatus() == ITestResult.FAILURE) {
 			Throwable e = testResult.getThrowable();
-			logger.error("Error message: " + e.getMessage());
+			log.error("Error message: " + e.getMessage());
 			endLoggingFail(loggingMessage, loggingArgs);
 		}
 	}

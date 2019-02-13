@@ -1,5 +1,6 @@
 package ch.fabric.qa.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,9 +17,8 @@ import static ch.fabric.qa.utils.WebDriverUtils.*;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class ApplicationSettingsPage extends BasePage {
-
-    protected static final Logger logger = LoggerFactory.getLogger(ApplicationSettingsPage.class);
 
     private By createNewRoleButton = By.xpath("//button//div[text()='Create a new role']");
     private By addNewUserButton = By.xpath("//button//div[text()='Add new user']");
@@ -78,7 +78,7 @@ public class ApplicationSettingsPage extends BasePage {
     private By saveOnEdit = By.xpath("//div[@data-v-67500b92]//div[text()='Save']/ancestor::button");
     private By saveAddUser = By.xpath("//div[text()='Save']/ancestor::button[not(contains(@class, 'at-main-save-btn'))]");
     private By manuallyPasswordButton = By.xpath("//div[@class='q-toggle-handle row flex-center']");
-    private By newRoleAddUserSave = By.xpath("//div[text()='Save']");
+    private By newRoleAddUserSave = By.xpath("//div[@data-v-375d40de]//div[text()='Save']/ancestor::button");
     private By browseRolesButton = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='Browse roles']");
     private By browseRolesElementFromList = By.xpath("//span[@class='role-name']");
     private By addRoleName = By.xpath("//input[@class='col q-input-target q-no-input-spinner ellipsis']");
@@ -92,127 +92,164 @@ public class ApplicationSettingsPage extends BasePage {
     private By removeButtonOnApp = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='REMOVE']");
     private By updateButtonSegment2App = By.xpath("//div[@class='q-btn-inner row col items-center justify-center' and text()='UPDATE']");
     private By segment2App = By.xpath("//h1[text()='Segment2']");
+    private By clickUser = By.xpath("//span[@class='email']");
+    private By editUserButton = By.xpath("//button//div[text()='Edit user']");
+    private By saveRoleEditPermissionsChanges = By.xpath("//div[@data-v-c47111d6]//div[text()='Save']/ancestor::button");
+    private By saveRoleEditChanges = By.xpath("//div[@data-v-67500b92]//div[text()='Save']/ancestor::button");
 
     public static By checkTableRow = By.xpath("//table");
     protected ApplicationSettingsPage(WebDriver driver) {
         super(driver);
     }
 
+    public void editUser(){
+        log.info("Click on an user...");
+        WebDriverUtils.clickOnElementWithWait(driver, clickUser);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        log.info("Click on the edit user button...");
+        WebDriverUtils.clickOnElementWithWait(driver, editUserButton);
+        log.info("Editing the role name...");
+        WebDriverUtils.clickOnElementWithWait(driver, addRoleName);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        WebDriverUtils.enterTextBoxWithoutClear(driver, addRoleName, "NewRoleNameEdit");
+        log.info("Click on add permissions button...");
+        WebDriverUtils.clickOnElementWithWait(driver, addPermissionIcon);
+        log.info("Click and select an app from the drop down list...");
+        WebDriverUtils.clickOnElementWithWait(driver, permissionsSelectApp);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        WebDriverUtils.clickOnElementWithWait(driver, selectAutomationTestLucianApp);
+        log.info("Select the initiator level...");
+        WebDriverUtils.clickOnElementWithWait(driver, levelsInitiator);
+        log.info("Save the permissions tab...");
+        WebDriverUtils.clickOnElementWithWait(driver, saveRoleOnNew);
+        log.info("Click on the Add user ...");
+        WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUsersButton);
+        WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
+        log.info("Select user from the list...");
+        WebDriverUtils.clickOnElementWithWait(driver, newRoleSelectUserFromList);
+        WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
+        log.info("Save the permissions changes...");
+        WebDriverUtils.clickOnElementWithWait(driver, saveRoleEditPermissionsChanges);
+        log.info("Save the edit user changes...");
+        WebDriverUtils.clickOnElementWithWait(driver, saveRoleEditChanges);
+
+
+    }
+
     public void updateElements() {
-        logger.info("Clicking on the update button on an app...");
+        log.info("Clicking on the update button on an app...");
         if (WebDriverUtils.findElement(driver, segment2App) == null) {
             WebDriverUtils.clickOnElementWithWait(driver, segment2App);
             WebDriverUtils.clickOnElementWithWait(driver, updateButtonSegment2App);
-            logger.info("The app was successfully installed...");
+            log.info("The app was successfully installed...");
         } else {
-            logger.info("The install button is not working as expected or not existing on any app...");
+            log.info("The install button is not working as expected or not existing on any app...");
         }
     }
 
     public void clickCreateNewRole() {
-        logger.info("Creating new role...");
+        log.info("Creating new role...");
         WebDriverUtils.clickOnElementWithWait(driver, createNewRoleButton);
     }
 
     public void accessSettingsPage() {
-        logger.info("Accessing the settings page...");
+        log.info("Accessing the settings page...");
         WebDriverUtils.clickOnElementWithWait(driver, settingsLink);
     }
 
     public void removeElements() {
-        logger.info("Click on the Remove button on an app...");
+        log.info("Click on the Remove button on an app...");
         if (WebDriverUtils.findElement(driver, dateTimePickerApp) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, dateTimePickerApp);
             WebDriverUtils.clickOnElementWithWait(driver, removeButtonOnApp);
-            logger.info("The app was successfully removed...");
+            log.info("The app was successfully removed...");
         } else {
-            logger.info("The remove button is not working as expected...");
+            log.info("The remove button is not working as expected...");
         }
     }
 
     public void installElements() {
-        logger.info("Clicking on the install button on an app...");
+        log.info("Clicking on the install button on an app...");
         if (WebDriverUtils.findElement(driver, dateTimePickerApp) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, buttonApiApp);
             WebDriverUtils.clickOnElementWithWait(driver, installButtonAPIApp);
-            logger.info("The app was successfully updated...");
+            log.info("The app was successfully updated...");
         } else {
-            logger.info("The update button is not working as expected...");
+            log.info("The update button is not working as expected...");
         }
     }
 
     public void syncElements() {
-        logger.info("Click on components from marketplace tab...");
+        log.info("Click on components from marketplace tab...");
         WebDriverUtils.clickOnElementWithWait(driver,componentsFromMarketplaceLink);
-        logger.info("Click on the Sync button...");
+        log.info("Click on the Sync button...");
         WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, syncBtn);
     }
 
     public void createANewRole() {
-        logger.info("Click on create a new role button...");
+        log.info("Click on create a new role button...");
         WebDriverUtils.clickOnElementWithWait(driver, createNewRoleButton);
-        logger.info("Entering a new role name...");
+        log.info("Entering a new role name...");
         WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.enterTextBox(driver, addRoleName, "NewRoleNameTest");
-        logger.info("Click on add permissions button...");
+        log.info("Click on add permissions button...");
         WebDriverUtils.clickOnElementWithWait(driver, addPermissionIcon);
-        logger.info("Click and select an app from the drop down list...");
+        log.info("Click and select an app from the drop down list...");
         WebDriverUtils.clickOnElementWithWait(driver, permissionsSelectApp);
         WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, selectAutomationTestLucianApp);
-        logger.info("Select the initiator leve...");
+        log.info("Select the initiator level...");
         WebDriverUtils.clickOnElementWithWait(driver, levelsInitiator);
-        logger.info("Save the permissions tab...");
+        log.info("Save the permissions tab...");
         WebDriverUtils.clickOnElementWithWait(driver, saveRoleOnNew);
-        logger.info("Click on the Add user and select a new user from the drop down...");
+        log.info("Click on the Add user and select a new user from the drop down...");
         WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUsersButton);
         WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, newRoleSelectUserFromList);
         WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUserSave);
-
     }
 
     public void browseRoles(){
-        logger.info("Click on the browse roles button...");
+        log.info("Click on the browse roles button...");
         WebDriverUtils.clickOnElementWithWait(driver, browseRolesButton);
         WebDriverUtils.explicitWait(driver, WAIT_500_MILLISECONDS);
-        logger.info("Check if the browse role button works...");
+        log.info("Check if the browse role button works...");
         if (WebDriverUtils.findElement(driver, browseRolesElementFromList) != null) {
-            logger.info("The list gets populated with users...");
+            log.info("The list gets populated with users...");
         } else {
-            logger.info("The list is empty or the browse users button is not working as expected...");
+            log.info("The list is empty or the browse users button is not working as expected...");
         }
     }
 
     public void addANewUser()  {
-        logger.info("Click on the add new user button...");
+        log.info("Click on the add new user button...");
         WebDriverUtils.clickOnElementWithWait(driver, addUser);
-        logger.info("Entering the first name...");
+        log.info("Entering the first name...");
         WebDriverUtils.clickOnElementWithWait(driver, firstNameTextBox);
         WebDriverUtils.enterTextBox(driver, firstNameTextBox, "FirstNameTest");
-        logger.info("Entering the last name...");
+        log.info("Entering the last name...");
         WebDriverUtils.clickOnElementWithWait(driver, lastNameTextBox);
         WebDriverUtils.enterTextBox(driver, lastNameTextBox, "LastNameTest");
-        logger.info("Entering the email...");
+        log.info("Entering the email...");
         WebDriverUtils.clickOnElementWithWait(driver, emailAddressTextBox);
         WebDriverUtils.enterTextBox(driver, emailAddressTextBox, "email@test.com");
-        logger.info("Selecting the male gender...");
+        log.info("Selecting the male gender...");
         WebDriverUtils.clickOnElementWithWait(driver, maleRadioButton);
-        logger.info("Click on the manually set password button...");
+        log.info("Click on the manually set password button...");
         WebDriverUtils.clickOnElementWithWait(driver, manuallyPasswordButton);
         WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
-        logger.info("Manually setting the password...");
+        log.info("Manually setting the password...");
         WebDriverUtils.clickOnElementWithWait(driver, passwordTxtBoxSetManually);
         WebDriverUtils.enterTextBox(driver, passwordTxtBoxSetManually, "testpassword");
-        logger.info("Saving the changes...");
+        log.info("Saving the changes...");
         WebDriverUtils.clickOnElementWithWait(driver, newRoleAddUserSave);
 
     }
 
     public void clickAddNewUser() {
-        logger.info("Creating new user..");
+        log.info("Creating new user..");
         WebDriverUtils.clickOnElementWithWait(driver, addNewUserButton);
     }
 
@@ -226,95 +263,95 @@ public void searchUserOrRole(String searchEmail){
 }
 
 public void clickSaveOnNew() {
-        logger.info("Saving the Role..");
+        log.info("Saving the Role..");
         WebDriverUtils.clickOnElementWithWait(driver, saveRoleOnNew);
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
 }
 
     public void clickSaveOnNewUser() {
-        logger.info("Saving the Role..");
+        log.info("Saving the Role..");
         WebDriverUtils.clickOnElementWithWait(driver, saveAddUser);
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
     }
 
     public void clickSaveOnEdit() {
-        logger.info("Saving the Role..");
+        log.info("Saving the Role..");
         WebDriverUtils.clickOnElementWithWait(driver, saveOnEdit);
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
     }
 
     public void clikcBrowseRoles() {
-        logger.info("Browsing role..");
+        log.info("Browsing role..");
         WebDriverUtils.clickOnElementWithWait(driver, browseRoles);
     }
 
     public void createNewRole(String roleName) {
-        logger.info("Entering role name..");
+        log.info("Entering role name..");
         WebDriverUtils.enterTextBox(driver, roleNameTextBox, roleName);
     }
 
     public void selectApplication() {
-        logger.info("Selecting application..");
+        log.info("Selecting application..");
         WebDriverUtils.clickOnElementWithWait(driver, arrowSelectApp);
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, exampleSelectApp);
     }
 
     public void addPermission() {
-        logger.info("Adding new permissions..");
+        log.info("Adding new permissions..");
         WebDriverUtils.clickOnElementWithWait(driver, addPermissionIcon);
     }
 
     public void addUsers() {
-        logger.info("Adding new user..");
+        log.info("Adding new user..");
         WebDriverUtils.clickOnElementWithWait(driver, addUser);
     }
 
     public void checkUserFromTable(String userValue){
-        logger.info("Checking an user in table..");
+        log.info("Checking an user in table..");
         WebDriverUtils.explicitWait(super.driver, WAIT_5000_MILLISECONDS);
         WebDriverUtils.table(driver, userValue, usersAndRolesTable);
 //        WebDriverUtils.clickOnElementWithWait(driver, checkCheckboxUser);
     }
 
     public void enterRoleName(String roleValue) {
-        logger.info("Entering new role name..");
+        log.info("Entering new role name..");
         WebDriverUtils.enterTextBox(driver, roleNameTxtBox, roleValue);
     }
 
     public void uploadImageUser(String filePath) {
-        logger.info("Uploading image for user..");
+        log.info("Uploading image for user..");
         WebDriverUtils.uploadFile(driver,uploadImageIcon, filePath );
     }
 
     public void enterFirstName(String firstName) {
-        logger.info("Entering First Name..");
+        log.info("Entering First Name..");
         WebDriverUtils.enterTextBox(driver, firstNameTextBox, firstName);
 
     }
 
     public void enterLastName(String lastName) {
-        logger.info("Entering Last Name..");
+        log.info("Entering Last Name..");
         WebDriverUtils.enterTextBox(driver, lastNameTextBox, lastName);
     }
 
     public void enterEmailAddress(String emailAddress) {
-        logger.info("Entering email address..");
+        log.info("Entering email address..");
         WebDriverUtils.enterTextBox(driver, emailAddressTextBox, emailAddress);
     }
 
     public void checkGenre(String option) {
         switch (option) {
             case "Female":
-                logger.info("Checking radio button Female..");
+                log.info("Checking radio button Female..");
                 WebDriverUtils.clickOnElementWithWait(driver, femaleRadioButton);
                 break;
             case "Male":
-                logger.info("Checking radio button Male..");
+                log.info("Checking radio button Male..");
                 WebDriverUtils.clickOnElementWithWait(driver, maleRadioButton);
                 break;
             default:
-                logger.info("Option not supported", option);
+                log.info("Option not supported", option);
         }
     }
 // STATUS HAS BEEN REMOVED FROM THE INTERFACE IT WILL BE ADDED LATER ON
@@ -322,36 +359,36 @@ public void clickSaveOnNew() {
 //    public void checkStatus(String option) {
 //        switch (option) {
 //            case "Inactiv":
-//                logger.info("Checking radio button Inactive..");
+//                log.info("Checking radio button Inactive..");
 //                WebDriverUtils.clickOnElementWithWait(driver, inactiveRadioButton);
 //                break;
 //            case "Disabled":
-//                logger.info("Checking radio button Disabled..");
+//                log.info("Checking radio button Disabled..");
 //                WebDriverUtils.clickOnElementWithWait(driver, disabledRadioButton);
 //                break;
 //            case "Active":
-//                logger.info("Checking radio button Active..");
+//                log.info("Checking radio button Active..");
 //                WebDriverUtils.clickOnElementWithWait(driver, activeRadiobutton);
 //                break;
 //            default:
-//                logger.info("Option not supported", option);
+//                log.info("Option not supported", option);
 //        }
 //    }
 
     public void actEditRole() {
-        logger.info("Editing the role..");
+        log.info("Editing the role..");
         WebDriverUtils.clickOnElementWithWait(driver, activateEditRole);
     }
 
     public void editRoles() {
-        logger.info("Editing the role..");
+        log.info("Editing the role..");
         WebDriverUtils.clickOnElementWithWait(driver, editRole);
         WebDriverUtils.explicitWait(driver, WAIT_1000_MILLISECONDS);
     }
 
 
     public void moreActionsRole() {
-        logger.info("Displaying more options..");
+        log.info("Displaying more options..");
         WebDriverUtils.clickOnElementWithWait(driver, moreIcon);
     }
 
@@ -361,29 +398,29 @@ public void clickSaveOnNew() {
     }
 
     public void addManuallyUsers() {
-        logger.info("Adding manually users..");
+        log.info("Adding manually users..");
         WebDriverUtils.clickOnElementWithWait(driver, addManuallyUsersArrow);
         WebDriverUtils.uploadFile(driver, uploadImgManuallyUser, "C://Downloads//download (1).png");
     }
 
     public void selectApplication(String option) {
-        logger.info("Settings permissions..");
+        log.info("Settings permissions..");
         WebDriverUtils.selectVisibleText(driver, selectApplication, option);
     }
 
     public void setInitiator() {
-        logger.info("Set initiator On..");
+        log.info("Set initiator On..");
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, initiatorOn);
     }
 
     public void setEditor() {
-        logger.info("Set editor On..");
+        log.info("Set editor On..");
         WebDriverUtils.clickOnElementWithWait(driver, editorOn);
     }
 
     public void setReportViewer() {
-        logger.info("Set report viewer On..");
+        log.info("Set report viewer On..");
         WebDriverUtils.clickOnElementWithWait(driver, reportViewerOn);
     }
 

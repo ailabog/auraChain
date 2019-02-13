@@ -1,21 +1,21 @@
 package ch.fabric.qa.applicationsettings;
 
 import ch.fabric.qa.BaseTest;
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.*;
 import ch.fabric.qa.utils.CredentialsUtils;
 import ch.fabric.qa.utils.GenerateRandomData;
 import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+@Slf4j
 public class SyncElementsTest extends BaseTest {
 	private LoginPage loginPage;
-	private Environments environment;
 	private LandingPage landingPage;
 	private ManageAppsPage manageAppsPage;
 	private ApplicationSettingsPage applicationSettingsPage;
@@ -32,21 +32,17 @@ public class SyncElementsTest extends BaseTest {
 	private static final String LAST_NAME = faker.lastName();
 	private static final String EMAIL = FIRST_NAME + "." + LAST_NAME + "@4t35t.com";
 
-	@Parameters({"environment"})
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
-		this.environment = environment == null ? Environments.TEST : Environments.valueOf(environment);
 	}
 
 	//Done
 	@Test(priority = 0)
 	public void C1103SyncElementsTest() {
-		logger.info("Starting synch elements test..");
+		log.info("Starting synch elements test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		applicationSettingsPage = landingPage.returnApplicationSettingsPage();

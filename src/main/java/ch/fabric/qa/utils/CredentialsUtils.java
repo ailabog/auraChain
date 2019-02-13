@@ -3,6 +3,7 @@ package ch.fabric.qa.utils;
 import java.io.IOException;
 import java.util.Properties;
 
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,11 +13,10 @@ import org.slf4j.LoggerFactory;
  *
  */
 
+@Slf4j
 public class CredentialsUtils {
 
-	private static final Logger logger = LoggerFactory.getLogger(CredentialsUtils.class);
 	private static final Properties properties = loadProperties();
-
 
 	private static Properties loadProperties() {
 		String env = System.getProperty("environment");
@@ -26,7 +26,7 @@ public class CredentialsUtils {
 			prop.load(CredentialsUtils.class.getClassLoader().getResourceAsStream(env +".properties"));
 			return prop;
 		} catch (IOException e) {
-			logger.error("Error ocured while loading properties {}", e.getMessage());
+			log.error("Error ocured while loading properties {}", e.getMessage());
 			throw new RuntimeException(e);
 		}
 	}

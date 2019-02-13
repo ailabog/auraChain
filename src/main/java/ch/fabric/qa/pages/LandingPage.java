@@ -1,5 +1,6 @@
 package ch.fabric.qa.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,9 +15,9 @@ import ch.fabric.qa.utils.WebDriverUtils;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class LandingPage extends BasePage {
 
-    protected static final Logger logger = LoggerFactory.getLogger(LandingPage.class);
 
     private By landingIcon = By.xpath("//button//i[@class='q-icon fas fa-th']");
     private By appsElement = By.xpath("//a//div[text()='Apps']");
@@ -48,69 +49,69 @@ public class LandingPage extends BasePage {
     }
 
     public void checkRole() {
-        logger.info("Checking the user role...");
+        log.info("Checking the user role...");
     }
 
     public void changeNotificationSettings() {
-        logger.info("Click on the profile icon...");
+        log.info("Click on the profile icon...");
         WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
-        logger.info("Click on the My Account button...");
+        log.info("Click on the My Account button...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, myAccountButton);
-        logger.info("Change Notify me each time I am assigned a task ...");
+        log.info("Change Notify me each time I am assigned a task ...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification1);
-        logger.info("Change Notify me each time a task is assigned to a role I am in...");
+        log.info("Change Notify me each time a task is assigned to a role I am in...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification2);
-        logger.info("Change Notify me each time an application I own is run...");
+        log.info("Change Notify me each time an application I own is run...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification3);
-        logger.info("Change Notify me each time a diagram I worked on is modified...");
+        log.info("Change Notify me each time a diagram I worked on is modified...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification4);
-        logger.info("Change Notify me each time an interface is added...");
+        log.info("Change Notify me each time an interface is added...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification5);
-        logger.info("Change Notify me each time an interface I have worked on is modified...");
+        log.info("Change Notify me each time an interface I have worked on is modified...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification6);
-        logger.info("Change Via email at undefined...");
+        log.info("Change Via email at undefined...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification7);
-        logger.info("Change Via SMS at undefined...");
+        log.info("Change Via SMS at undefined...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification8);
-        logger.info("Change Regular in-app notifications...");
+        log.info("Change Regular in-app notifications...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, notification9);
     }
 
     public void changeUserInformation() {
-        logger.info("Click on the profile icon...");
+        log.info("Click on the profile icon...");
         WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
-        logger.info("Click on the My Account button...");
+        log.info("Click on the My Account button...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, myAccountButton);
-        logger.info("Click on the Change information button...");
+        log.info("Click on the Change information button...");
         WebDriverUtils.clickOnElementWithWait(driver, changeInformationButton);
     }
 
     public void userLogOut () {
-        logger.info("Click on the profile icon...");
+        log.info("Click on the profile icon...");
         WebDriverUtils.clickOnElementWithWait(driver, profileIcon);
-        logger.info("Click on hte logout button...");
+        log.info("Click on hte logout button...");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, logoutButton);
     }
 
     public void clickApps() {
-        logger.info("Click on Apps button..");
+        log.info("Click on Apps button..");
         WebDriverUtils.clickOnElementWithWait(driver, appsElement);
     }
 
     public void clickMenus() {
-        logger.info("Go to Menus..");
+        log.info("Go to Menus..");
         WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_2000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(driver, landingIcon);
     }
@@ -121,37 +122,37 @@ public class LandingPage extends BasePage {
             WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
             if (WebDriverUtils.findElement(driver, workspaceElement) != null) {
                 WebDriverUtils.clickOnElementWithWait(driver, workspaceElement);
-                logger.info("Workspace element can be accessed");
+                log.info("Workspace element can be accessed");
             } else {
-                logger.info("Workspace element is not displayed");
+                log.info("Workspace element is not displayed");
             }
             if (WebDriverUtils.findElement(driver, dashboardElement) != null) {
                 WebDriverUtils.checkIfElementExists(driver, dashboardElement, 10);
                 WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_500_MILLISECONDS);
-                logger.info("Dashboard element can be accessed");
+                log.info("Dashboard element can be accessed");
             } else {
-                logger.info("Dashboard element is not displayed");
+                log.info("Dashboard element is not displayed");
             }
             if (WebDriverUtils.findElement(driver, appsElement) != null) {
                 WebDriverUtils.checkIfElementExists(driver, applicationSettingsElement, 10);
-                logger.info("Apps element can be accessed");
+                log.info("Apps element can be accessed");
             } else {
-                logger.info("Apps element is not displayed");
+                log.info("Apps element is not displayed");
             }
             if (WebDriverUtils.findElement(driver, applicationSettingsElement) != null) {
                 WebDriverUtils.checkIfElementExists(driver, applicationSettingsElement, 10);
-                logger.info("Application Settings element can be accessed");
+                log.info("Application Settings element can be accessed");
             } else {
-                logger.info("Application Settings element is not displayed");
+                log.info("Application Settings element is not displayed");
             }
             if (WebDriverUtils.findElement(driver, tasksElement) != null) {
                 WebDriverUtils.checkIfElementExists(driver, applicationSettingsElement, 10);
-                logger.info("Tasks Element can be accessed");
+                log.info("Tasks Element can be accessed");
             } else {
-                logger.info("Tasks Elements Element is not displayed");
+                log.info("Tasks Elements Element is not displayed");
             }
         } else {
-            logger.info("Elements were not found");
+            log.info("Elements were not found");
         }
     }
 

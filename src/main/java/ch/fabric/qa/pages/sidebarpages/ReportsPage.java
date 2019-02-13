@@ -3,6 +3,7 @@ package ch.fabric.qa.pages.sidebarpages;
 import ch.fabric.qa.interfaces.Sidebar;
 import ch.fabric.qa.pages.BasePage;
 import ch.fabric.qa.utils.WebDriverUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -15,9 +16,9 @@ import org.slf4j.LoggerFactory;
  */
 
 
+@Slf4j
 public class ReportsPage extends BasePage {
 
-    private static Logger logger = LoggerFactory.getLogger(ReportsPage.class);
 
     private static By finishedProcessesTab = By.xpath("//div//div[text()='Finished processes']");
     private static By activeProcessesTab = By.xpath("//div[text()='Active processes']");
@@ -38,63 +39,63 @@ public class ReportsPage extends BasePage {
     public void compareStatusNameField(){
         if(WebDriverUtils.getElementText(driver, statusNameField).equals(DiagramsPage.STATUS_NAME_FIELD)){
             WebDriverUtils.explicitWait(driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
-            logger.info("Test passed");
+            log.info("Test passed");
         }
         else{
-            logger.info("TEST FAILED");
+            log.info("TEST FAILED");
         }
     }
 
     public void enterWarningThresholdValue() {
-        logger.info("Enter a new attention threshold value...");
+        log.info("Enter a new attention threshold value...");
         WebDriverUtils.enterTextBox(driver, warningThresholdField, "80");
     }
 
     public void clickWarningThresholdField() {
-        logger.info("Click on the Attention threshold field...");
+        log.info("Click on the Attention threshold field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, warningThresholdField);
     }
 
     public void enterAttentionThresholdValue() {
-        logger.info("Enter a new attention threshold value...");
+        log.info("Enter a new attention threshold value...");
         WebDriverUtils.enterTextBox(driver, attentionThresholdField, "10");
     }
 
     public void clickAttentionThresholdField() {
-        logger.info("Click on the Attention threshold field...");
+        log.info("Click on the Attention threshold field...");
         WebDriverUtils.clickOnElementWithWait(super.driver, attentionThresholdField);
     }
 
     public void clickThresholdsButton() {
-        logger.info("Click on Thresholds button from the right...");
+        log.info("Click on Thresholds button from the right...");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, thresholds);
     }
 
     public void clickTurnaroundTime() {
-        logger.info("Click on Turnaround time button from the right...");
+        log.info("Click on Turnaround time button from the right...");
         WebDriverUtils.clickOnElementWithWait(super.driver, turnaroundTime);
     }
 
     public void clickZoomPlus() {
-        logger.info("Click on zoom - plus");
+        log.info("Click on zoom - plus");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, zoomPlus);
     }
 
     public void clickZoomMinus() {
-        logger.info("Click on zoom - minus");
+        log.info("Click on zoom - minus");
         WebDriverUtils.explicitWait(super.driver, WebDriverUtils.WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, zoomMinus);
     }
 
     public void clickFinishedProcesses() {
-        logger.info("Go to FINISHED PROCESSES Tab..");
+        log.info("Go to FINISHED PROCESSES Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, finishedProcessesTab);
     }
 
     public void clickActiveProcesses() {
-        logger.info("Go to FINISHED PROCESSES Tab..");
+        log.info("Go to FINISHED PROCESSES Tab..");
         WebDriverUtils.clickOnElementWithWait(super.driver, activeProcessesTab);
     }
 }

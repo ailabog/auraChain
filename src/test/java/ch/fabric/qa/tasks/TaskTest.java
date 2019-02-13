@@ -1,11 +1,11 @@
 package ch.fabric.qa.tasks;
 
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.*;
 import ch.fabric.qa.BaseTest;
 import ch.fabric.qa.utils.CredentialsUtils;
 import ch.fabric.qa.utils.GenerateRandomData;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -18,11 +18,10 @@ import org.testng.annotations.Test;
  * @author aila.bogasieru@agys.ch
  */
 
-
+@Slf4j
 public class TaskTest extends BaseTest {
 
     private LoginPage loginPage;
-    private Environments environment;
     private LandingPage landingPage;
     private TasksPage tasksPage;
 
@@ -33,21 +32,17 @@ public class TaskTest extends BaseTest {
     private static final String EMAIL = GenerateRandomData.generateEmail(10);
     private static final String PASSWORD = GenerateRandomData.generateRandomString(10);
 
-    @Parameters({"environment"})
     @BeforeTest
-    public void setuUp(String environment) {
+    public void setuUp() {
         ChromeDriverManager.getInstance().setup();
-        this.environment = environment == null? Environments.TEST : Environments.valueOf(environment);
     }
 
     @Test(priority = 0)
     public void checkTaskPages() {
-        logger.info("Starting tasks navigation test..");
+        log.info("Starting tasks navigation test..");
 //        loginPage.load(environment.getURL());
         loginPage = new LoginPage(new ChromeDriver());
-        loginPage.load(CredentialsUtils.getProperty("url"));
-        loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-        loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+        loginPage.login();
         landingPage = loginPage.returnLandingPage();
         landingPage.clickMenus();
         tasksPage = landingPage.returnTasksPage();
@@ -56,7 +51,7 @@ public class TaskTest extends BaseTest {
         tasksPage.goToMyOpenTasks();
         tasksPage.checkOpenTasksFilter();
 
-        logger.info("Finishing tasks navigation test.");
+        log.info("Finishing tasks navigation test.");
     }
 
     @AfterTest

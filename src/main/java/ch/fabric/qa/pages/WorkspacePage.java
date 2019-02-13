@@ -1,5 +1,6 @@
 package ch.fabric.qa.pages;
 
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -14,9 +15,9 @@ import ch.fabric.qa.utils.WebDriverUtils;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class WorkspacePage extends BasePage {
 
-    protected static final Logger logger = LoggerFactory.getLogger(WorkspacePage.class);
 
     private By hideIconWorkspace = By.xpath("/html/body/div[4]/div[2]/div/div[1]/div/button");
     private By workspaceElement = By.xpath("/html/body/div[4]/div[2]/div/div[1]/div/div");
@@ -48,7 +49,7 @@ public class WorkspacePage extends BasePage {
         if (WebDriverUtils.findElement(driver, workspaceElement) != null) {
             WebDriverUtils.clickOnElementWithWait(driver, hideIconWorkspace);
         } else {
-            logger.info("Element Workspace was not found");
+            log.info("Element Workspace was not found");
         }
     }
 

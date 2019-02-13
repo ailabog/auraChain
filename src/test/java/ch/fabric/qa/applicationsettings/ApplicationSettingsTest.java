@@ -1,12 +1,12 @@
 package ch.fabric.qa.applicationsettings;
 
 import com.github.javafaker.Faker;
-import ch.fabric.qa.enums.Environments;
 import ch.fabric.qa.pages.*;
 import ch.fabric.qa.BaseTest;
 import ch.fabric.qa.utils.CredentialsUtils;
 import ch.fabric.qa.utils.GenerateRandomData;
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -19,10 +19,10 @@ import org.testng.annotations.Test;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class ApplicationSettingsTest extends BaseTest{
 
 	private LoginPage loginPage;
-	private Environments environment;
 	private LandingPage landingPage;
 	private ManageAppsPage manageAppsPage;
 	private ApplicationSettingsPage applicationSettingsPage;
@@ -39,20 +39,17 @@ public class ApplicationSettingsTest extends BaseTest{
 	private static final String LAST_NAME = faker.lastName();
     private static final String EMAIL = FIRST_NAME + "." + LAST_NAME + "@4t35t.com";
 
-	@Parameters({"environment"})
 	@BeforeTest
-	public void setuUp(Environments environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
-		this.environment = environment;
 	}
+
 //Done
 	@Test(priority=0)
 	public void createRoleAndUser(){
-		logger.info("Starting creating users and roles test..");
+		log.info("Starting creating users and roles test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		applicationSettingsPage = landingPage.returnApplicationSettingsPage();
@@ -64,16 +61,14 @@ public class ApplicationSettingsTest extends BaseTest{
 		applicationSettingsPage.clickSaveOnNew();
 		applicationSettingsPage.closePanel();
 
-		logger.info("Finishing creating users and roles test.");
+		log.info("Finishing creating users and roles test.");
    }
 //Done
 	@Test(priority=1)
 	public void addNewUser(){
-		logger.info("Starting adding new user test..");
+		log.info("Starting adding new user test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		applicationSettingsPage = landingPage.returnApplicationSettingsPage();
@@ -85,16 +80,14 @@ public class ApplicationSettingsTest extends BaseTest{
 //applicationSettingsPage.checkStatus("Active"); was removed from the app, will be deleted when the design is confirmed
 		applicationSettingsPage.manuallySetPassword(PASSWORD);
 		applicationSettingsPage.clickSaveOnNewUser();
-		logger.info("Finishing adding new user test.");
+		log.info("Finishing adding new user test.");
 	}
 //Done
 	@Test(priority=2)
 	public void browseAndSaveRoles(){
-		logger.info("Starting browsing roles test..");
+		log.info("Starting browsing roles test..");
 		loginPage = new LoginPage(new ChromeDriver());
-		loginPage.load(CredentialsUtils.getProperty("url"));
-		loginPage.usernameLogin(CredentialsUtils.getProperty("username"));
-		loginPage.passwordLogin(CredentialsUtils.getProperty("password"));
+		loginPage.login();
 		landingPage = loginPage.returnLandingPage();
 		landingPage.clickMenus();
 		applicationSettingsPage = landingPage.returnApplicationSettingsPage();
@@ -102,7 +95,7 @@ public class ApplicationSettingsTest extends BaseTest{
 		applicationSettingsPage.actEditRole();
 		applicationSettingsPage.editRoles();
 		applicationSettingsPage.clickSaveOnEdit();
-		logger.info("Finishing browsing roles test.");
+		log.info("Finishing browsing roles test.");
 	}
 
 	@AfterTest

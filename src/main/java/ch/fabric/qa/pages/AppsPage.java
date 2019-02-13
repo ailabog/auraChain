@@ -2,6 +2,7 @@ package ch.fabric.qa.pages;
 
 import ch.fabric.qa.interfaces.*;
 import ch.fabric.qa.pages.sidebarpages.DiagramsPage;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,9 +20,8 @@ import static ch.fabric.qa.utils.WebDriverUtils.WAIT_1000_MILLISECONDS;
  * @author aila.bogasieru@agys.ch
  */
 
+@Slf4j
 public class AppsPage extends BasePage {
-
-    protected static final Logger logger = LoggerFactory.getLogger(AppsPage.class);
 
     private By searchTextBox = By.xpath("//input[@placeholder='Search']");
     private By createNewButton = By.xpath("//button//div[text()='Create new']");
@@ -63,38 +63,38 @@ public class AppsPage extends BasePage {
     }
 
     public void clickApplicationName() {
-        logger.info("Clicking on application name field...");
+        log.info("Clicking on application name field...");
         WebDriverUtils.clickOnElement(driver, appsNameTxtBox);
     }
 
     public void clickApplicationDescription() {
-        logger.info("Clicking on application description field...");
+        log.info("Clicking on application description field...");
         WebDriverUtils.clickOnElement(driver, appDescription);
     }
 
     public void clickOnUploadButton() {
-        logger.info("Clicking on upload image button...");
+        log.info("Clicking on upload image button...");
         WebDriverUtils.clickOnElement(driver, cloudUploadBtn);
     }
 
     public void clickOneApp() {
-        logger.info("Clicking on an app...");
+        log.info("Clicking on an app...");
         WebDriverUtils.clickOnElementWithWait(super.driver, oneApp);
     }
 
     public void clickOnEditAppbtn() {
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, editAppsBtn);
-        logger.info("Clicked on Edit App button");
+        log.info("Clicked on Edit App button");
     }
 
     public void searchApp(String appSearched) {
-        logger.info("Searching for application...");
+        log.info("Searching for application...");
         WebDriverUtils.enterTextBox(super.driver, searchTextBox, appSearched);
     }
 
     public void clickCreateNew() {
-        logger.info("Creating new application...");
+        log.info("Creating new application...");
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.clickOnElementWithWait(super.driver, createNewButton);
     }
@@ -102,7 +102,7 @@ public class AppsPage extends BasePage {
 
 
     public void clickYourApplication() {
-        logger.info("Accessing all the applications..");
+        log.info("Accessing all the applications..");
         WebDriverUtils.clickOnElementWithWait(super.driver, yourApplicationLink);
 
     }
@@ -116,86 +116,86 @@ public class AppsPage extends BasePage {
     }
 
     public void clickSharedWithYou() {
-        logger.info("Accessing all the applications that are shared with you..");
+        log.info("Accessing all the applications that are shared with you..");
         WebDriverUtils.clickOnElementWithWait(super.driver, sharedWithYouLink);
 
     }
 
     public void clickArchievedApplication() {
-        logger.info("Accessing all the archieved applications..");
+        log.info("Accessing all the archieved applications..");
         WebDriverUtils.clickOnElementWithWait(super.driver, archievedApplication);
     }
 
     public void enterAppsName(String nameApps) {
-        logger.info("Entering apss name..");
+        log.info("Entering apss name..");
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.enterTextBox(super.driver, appsNameTxtBox, nameApps);
     }
 
     public void selectTypeOfApp() {
-        logger.info("Selecting type of the application..");
+        log.info("Selecting type of the application..");
         WebDriverUtils.clickOnElementWithWait(super.driver, selectType);
     }
 
     public void standardApp() {
-        logger.info("Selecting standard App..");
+        log.info("Selecting standard App..");
         WebDriverUtils.clickOnElementWithWait(super.driver, standardValue);
     }
 
     public void hyperledgerdApp() {
-        logger.info("Selecting Hyperledger Fabric App..");
+        log.info("Selecting Hyperledger Fabric App..");
         WebDriverUtils.clickOnElementWithWait(super.driver, hyperledgerFabric);
     }
 
     public void enterAppDescription(String appDescriptionValue) {
-        logger.info("Entering description for the application..");
+        log.info("Entering description for the application..");
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.enterTextBox(super.driver, appDescription, appDescriptionValue);
     }
 
     public void saveAppClick() {
-        logger.info("Saving the application..");
+        log.info("Saving the application..");
         WebDriverUtils.clickOnElementWithWait(super.driver, saveAppBtn);
     }
 
     public void findMyApplication() {
-        logger.info("Uploading the image..");
+        log.info("Uploading the image..");
         WebDriverUtils.clickOnElementWithWait(super.driver, cloudUploadBtn);
     }
 
     public void uploadImageApps(String path) {
-        logger.info("Uploading the image..");
+        log.info("Uploading the image..");
         WebDriverUtils.uploadFile(super.driver, cloudUploadBtn, path);
     }
 
     public void SendDescSubstrToDesc() {
         WebDriverUtils.explicitWait(super.driver, WAIT_1000_MILLISECONDS);
         WebDriverUtils.findElement(super.driver, appDescription).sendKeys(DESCRIPTION_SUBSTRING);
-        logger.info("Updating the description with text: " + DESCRIPTION_SUBSTRING);
+        log.info("Updating the description with text: " + DESCRIPTION_SUBSTRING);
     }
 
 
     public void setEditAppsBtnApp(String appName) {
-        logger.info("Editing an app..");
+        log.info("Editing an app..");
         if (WebDriverUtils.table(driver, appName, applicationsTable)) {
             WebDriverUtils.clickOnElementWithWait(super.driver, editAppsBtn);
         } else {
-            logger.info("Application can not be edited..");
+            log.info("Application can not be edited..");
         }
     }
 
     public void clickMoreActionsApp() {
-        logger.info("Displaying more actions..");
+        log.info("Displaying more actions..");
         WebDriverUtils.clickOnElementWithWait(super.driver, moreActionsApp);
     }
 
     public void clickUserInterfaceActionApp() {
-        logger.info("Going to user interface action for app..");
+        log.info("Going to user interface action for app..");
         WebDriverUtils.clickOnElementWithWait(super.driver, userInterfaceActionApp);
     }
 
     public void clickReportsActionApp() {
-        logger.info("Going to reports action for app..");
+        log.info("Going to reports action for app..");
         WebDriverUtils.clickOnElementWithWait(super.driver, reportsActionApp);
     }
 
@@ -214,8 +214,8 @@ public class AppsPage extends BasePage {
                 ExpectedConditions.invisibilityOfElementLocated(createNewButton));
         WebDriverUtils.waitUntil(super.driver, WebDriverUtils.WAIT_60_SECONDS,
                 ExpectedConditions.visibilityOfElementLocated(diagram.publishButton));
-        logger.info("Publish element is visible..");
-        logger.info("Diagrams page is loaded..");
+        log.info("Publish element is visible..");
+        log.info("Diagrams page is loaded..");
         return new DiagramsPage(super.driver);
     }
 
