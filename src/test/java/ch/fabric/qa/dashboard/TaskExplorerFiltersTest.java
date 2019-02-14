@@ -21,7 +21,7 @@ public class TaskExplorerFiltersTest extends BaseTest {
 	private LandingPage landingPage;
 
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
 	}
 

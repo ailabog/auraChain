@@ -33,7 +33,7 @@ public class AppTest extends BaseTest{
 
 
 	@BeforeTest
-	public void setuUp(String environment) {
+	public void setuUp() {
 		ChromeDriverManager.getInstance().setup();
 	}
 
