@@ -44,11 +44,17 @@ public class AppsPage extends BasePage {
     private By oneApp = By.xpath("//*[contains(text(), 'AutomationTestLucian')]");
     private By searchIcon = By.xpath("//i[@class='q-icon fas fa-search']/ancestor::button");
     private By clickOnApp = By.xpath("//div[@class='apps-card-title row' and contains (text(), 'Samsung2021')]");
+    private By interfaceBuilder = By.xpath("//i[@class='q-icon mdi mdi-group']");
 
     private By pagesBtn = By.xpath("//button//div[text()='Pages']");
     private By layoutBtn = By.xpath("//button//div[text()='Layout']");
 
     private static final String DESCRIPTION_SUBSTRING = " Added Text to Description";
+
+    public void clickInterfaceBuilder() {
+        log.info("Click on the Interface builder menu...");
+        WebDriverUtils.clickOnElementWithWait(driver, interfaceBuilder);
+    }
 
     protected AppsPage(WebDriver driver) {
         super(driver);
