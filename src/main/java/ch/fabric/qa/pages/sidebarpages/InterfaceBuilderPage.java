@@ -44,7 +44,7 @@ public class InterfaceBuilderPage extends BasePage {
     public WebDriver getWebdriver(){ return super.driver;}
 
     public void editingTheStylesTab(){
-        log.info("")
+        log.info("");
     }
 
     public void addCodeNameDescription(){
