@@ -19,27 +19,69 @@ import org.slf4j.LoggerFactory;
 public class InterfaceBuilderPage extends BasePage {
 
 
-    private static By pagesBtn = By.xpath("//button//div[text()='Pages']");
-    private static By layoutBtn = By.xpath("//button//div[text()='Layout']");
+    private static By pagesBtn = By.xpath("//div[@class='q-btn-group row no-wrap inline q-btn-toggle text-primary fabric col']//div[text()='Pages']");
+    private static By layoutBtn = By.xpath("//button[@class='q-btn inline relative-position q-btn-item non-selectable q-btn-rectangle q-focusable q-hoverable bg-primary text-white']//div[text()='Pages']");
     private static By basicComponentsChevronDown = By.xpath("//div[text()='Basic components']");
     private static By layoutStructureChevronDown = By.xpath("//div[text()='Layout structure']");
     private static By panelUIAdd = By.xpath("//div[text()='Panel']");
     private static By panelIcon = By.xpath("//div//div[@class='col-auto left-item-icon row justify-center round-borders bg-white']");
     private static By standardElementsChevronDown = By.xpath("//div//i[@class='q-icon cursor-pointer transition-generic relative-position q-collapsible-toggle-icon material-icons q-item-icon']");
     private static By segmentIcon = By.xpath("//div//div[@class='col-auto left-item-icon row justify-center round-borders bg-white']");
-    private static By formElementsChevronDown = By.xpath("//div//i[@class='q-icon cursor-pointer transition-generic relative-position q-collapsible-toggle-icon material-icons q-item-icon rotate-180']");
-    private static By textBoxIcon = By.xpath("//div//div[@class='col-auto left-item-icon row justify-center round-borders bg-white']");
+    private static By formElementsChevronDown = By.xpath("//div[text()='Form elements']");
+    private static By textBoxIcon = By.xpath("//div[text()='Textbox']");
     private static By selectIcon = By.xpath("//div//div[@class='col-auto left-item-icon row justify-center round-borders bg-white']");
     private static By customComponentsChevronDown = By.xpath("//div//i[@class=q-icon cursor-pointer transition-generic relative-position q-collapsible-toggle-icon mdi mdi-chevron-down q-item-icon']");
     private static By textBox = By.xpath("//input//div[text()='New textbox']");
-    private static By codeInput = By.xpath("//html/body/div[1]/div[2]/main/div[3]/div[2]/div/div/div[1]/div/div[1]/div/div[3]/div[1]/div/div[2]/div[1]/input");
-    private static By nameInput = By.xpath("/html/body/div[1]/div[2]/main/div[3]/div[2]/div/div/div[1]/div/div[1]/div/div[3]/div[2]/div/div[2]/div[1]/input");
+    private static By codeInput = By.xpath("//div[text()='Code']//preceding::input");
+    private static By nameInput = By.xpath("//div[text()='Name']//following::input");
+    private static By descriptionInput = By.xpath("//div[text()='Description']//preceding::textarea[@class='col q-input-target q-input-area']");
+    private static By interfaceBuilderSaveButton = By.xpath("//div[text()='Save']");
 
     public InterfaceBuilderPage(WebDriver driver) {
         super(driver);
         Sidebar.setDriver(super.driver);
     }
     public WebDriver getWebdriver(){ return super.driver;}
+
+    public void editingTheStylesTab(){
+        log.info("")
+    }
+
+    public void addCodeNameDescription(){
+        log.info("Click on the Code field...");
+        WebDriverUtils.clickOnElementWithWait(driver, codeInput);
+        log.info("Entering text in the Code field...");
+        WebDriverUtils.enterTextBox(driver, codeInput, "CodeFieldTest");
+        log.info("Click on the Name field...");
+        WebDriverUtils.clickOnElementWithWait(driver, nameInput);
+        log.info("Entering text in the Name field...");
+        WebDriverUtils.enterTextBox(driver, nameInput, "NameFieldTest");
+        log.info("Click on the Description field...");
+        WebDriverUtils.clickOnElementWithWait(driver, descriptionInput);
+        log.info("Entering text in the Description field...");
+        WebDriverUtils.enterTextBox(driver, descriptionInput, "DescriptionFieldTest");
+    }
+
+    public void saveInterfaceBuilderPage(){
+        log.info("Save the interface builder ...");
+        WebDriverUtils.clickOnElementWithWait(driver, interfaceBuilderSaveButton);
+    }
+
+    public void addFormElementsComponents(){
+        log.info("Click Form elements section...");
+        WebDriverUtils.clickOnElementWithWait(driver, formElementsChevronDown);
+        log.info("Click on a textbox element...");
+        WebDriverUtils.clickOnElementWithWait(driver, textBoxIcon);
+    }
+
+    public void addLayoutStructureComponents() {
+        log.info("Click the Basic components section...");
+        WebDriverUtils.clickOnElementWithWait(driver, basicComponentsChevronDown);
+        log.info("Click Layout structure section...");
+        WebDriverUtils.clickOnElementWithWait(driver, layoutStructureChevronDown);
+        log.info("Add a panel element...");
+        WebDriverUtils.clickOnElementWithWait(driver, panelUIAdd);
+    }
 
     public void clickOnCodeInput() {
         log.info("Clicking on the code field..");
