@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="createNewAppTest" verbose="1" >
+<parameter name="environment" value="${environment}" />
+
+    <test name="createNewAppTest" >
+    <classes>
+        <class name="ch.fabric.qa.apps.CreateNewAppTest" />
+    </classes>
+</test>
+
+</suite>

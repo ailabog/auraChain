@@ -1,0 +1,8 @@
+username = test_user@agys.ch
+password = passw0rd
+dbusername = georgegatej
+dbpassword = Sk49NUcv1moFUKhc
+url = https://test01.qa.hq.aurachain.ch/
+
+usernameAlex = emil.savin@agys.ch
+passwordAlex= Parola123
